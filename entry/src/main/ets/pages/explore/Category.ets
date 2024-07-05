@@ -2,10 +2,6 @@ import { router } from '@kit.ArkUI'
 import { Card } from '../../component/Card'
 import { TagButton } from '../../component/TagButton'
 
-const colorList: Color[] = [
-  Color.Red, Color.Blue, Color.Brown, Color.Gray, Color.Green, Color.Orange, Color.Yellow, Color.Pink
-]
-
 const tagList: string[] = [
   '锻炼',
   '摇滚乐',
@@ -77,7 +73,7 @@ struct Category {
           }
           .backgroundColor(Color.Transparent)
           .margin({ right: 5 })
-          .onClick(() => router.back({ url: 'pages/Index' }))
+          .onClick(() => router.back())
 
           Row().layoutWeight(1)
 
