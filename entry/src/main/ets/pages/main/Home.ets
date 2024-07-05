@@ -45,6 +45,7 @@ export struct Home {
     Column() {
       ForEach(songData, (song: DataInterface) => {
         Song(song)
+          .onClick(() => router.pushUrl({ url: 'pages/CurrentPlaying', params: song }))
       }, (song: DataInterface) => song.name)
     }
     .alignItems(HorizontalAlign.Start)
