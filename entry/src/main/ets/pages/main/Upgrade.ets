@@ -40,7 +40,15 @@ export struct Upgrade {
         .onClick(() => this.isProfilePresent = !this.isProfilePresent)
 
       }
-      .margin({ top: 30, left: 15, right: 15 })
+      .margin({
+        top: 30,
+        bottom: 20,
+        left: 15,
+        right: 15
+      })
+
+      Image($rawfile('upgrade.jpeg'))
+        .width('100%')
     }
     .backgroundColor('#030303')
     .height('100%')
