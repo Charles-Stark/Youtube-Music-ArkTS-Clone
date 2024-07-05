@@ -1,4 +1,3 @@
-import { curves, router } from '@kit.ArkUI'
 import {MediaModel, mediaModel} from '../models/mediaModel'
 import {PullToRefresh, PullToRefreshConfigurator} from '@ohos/pulltorefresh'
 
