@@ -24,17 +24,17 @@ struct NewDiscovery {
   @Builder
   MoreBuilder() {
     Grid() {
-      ForEach(albumList.slice(2,6), (album: DataFrame) => {
+      ForEach(albumList, (album: DataFrame) => {
         GridItem(){
           Album({name:album.name, image: album.image, creator:album.creator})
         }
       }, (album: DataFrame) => album.name)
     }
-    .rowsTemplate('1fr')
+    .rowsTemplate('1fr 1fr')
     // .columnsGap(10)
     // .rowsGap(5)
     // .width('100%')
-    .height(200).scrollBar(BarState.Off)
+    .height(350).scrollBar(BarState.Off)
   }
 
   build() {
@@ -72,7 +72,6 @@ struct NewDiscovery {
       .height('100%')
     }
     .scrollBar(BarState.Off)
-    .edgeEffect(EdgeEffect.Spring)
     .backgroundColor('#030303')
   }
 }
