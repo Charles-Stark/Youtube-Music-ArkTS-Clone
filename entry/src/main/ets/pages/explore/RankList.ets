@@ -98,7 +98,6 @@ export struct RankList {
       ForEach(hotMusicianData, (data: DataInterfaceMusician) => {
         hotMusician(data)
       }, (data: DataInterfaceMusician) => data.name)
-      hotVideo().layoutWeight(1)
     }
   }
 

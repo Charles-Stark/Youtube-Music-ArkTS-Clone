@@ -30,6 +30,7 @@ export struct hotVideo {
               .alignSelf(ItemAlign.Start)
           }
           .width('100%')
+          .margin({top: 10})
           Text(this.creator+'  '+`${this.watch}`+'万次观看')
             .fontSize(14)
             .fontColor('#a9a9a9')
