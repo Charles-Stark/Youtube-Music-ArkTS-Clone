@@ -1,8 +1,17 @@
-import { router } from '@kit.ArkUI';
+import { curves, router } from '@kit.ArkUI';
+import { Profile } from './Profile';
 
 @Entry
 @Component
 struct Notification {
+  @State isProfilePresent: boolean = false
+
+  @Builder
+  ProfileBuilder() {
+    Profile({ isProfilePresent: this.isProfilePresent })
+      .transition(TransitionEffect.translate({ y: 1000 })).animation({ curve: curves.springMotion(0.6, 0.8) })
+  }
+
   build() {
     Column() {
       Row() {
@@ -31,6 +40,10 @@ struct Notification {
         }
         .margin({ left: 7 })
         .backgroundColor(Color.Transparent)
+        .bindContentCover(this.isProfilePresent, this.ProfileBuilder(), {
+          modalTransition: ModalTransition.DEFAULT,
+        })
+        .onClick(() => this.isProfilePresent = !this.isProfilePresent)
       }
       .margin({ top: 30, left: 15, right: 15 })
 
