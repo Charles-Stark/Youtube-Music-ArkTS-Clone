@@ -4,6 +4,7 @@
     "pages/main/Home",
     "pages/SearchPage",
     "pages/Notification",
-    "pages/explore/Category"
+    "pages/explore/Category",
+    "pages/CurrentPlaying"
   ]
 }

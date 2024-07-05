@@ -1,0 +1,180 @@
+import { router } from '@kit.ArkUI'
+import { DataInterface } from './main/Home'
+
+@Entry
+@Component
+struct CurrentPlaying {
+  song: DataInterface = router.getParams() as DataInterface
+
+  build() {
+    Column() {
+      if (this.song) {
+        Row() {
+          Button() {
+            Image($rawfile('header/down_arrow.svg')).height(30)
+          }
+          .backgroundColor(Color.Transparent)
+          .onClick(() => router.back({ url: 'pages/Index' }))
+
+          Row().layoutWeight(1)
+
+          Button() {
+            Image($rawfile('header/cast.svg')).height(30)
+          }
+          .backgroundColor(Color.Transparent)
+
+          Button() {
+            Image($rawfile('more.svg')).height(30)
+          }
+          .margin({ left: 7 })
+          .backgroundColor(Color.Transparent)
+        }
+        .margin({ top: 30, left: 15, right: 15 })
+
+        Image(this.song.image)
+          .height(300)
+          .width(300)
+          .borderRadius(15)
+          .margin({ top: 35 })
+
+        Scroll() {
+          Text(this.song.name)
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Bold)
+            .fontSize(30)
+        }
+        .scrollable(ScrollDirection.Horizontal)
+        .scrollBar(BarState.Off)
+        .margin({ left: 30, right: 30, top: 20 })
+
+        Text(this.song.creator)
+          .maxLines(1)
+          .textOverflow({ overflow: TextOverflow.Ellipsis })
+          .fontColor('#a9a9a9')
+          .fontSize(20)
+          .margin({ left: 30, right: 30, top: 7 })
+          .alignSelf(ItemAlign.Start)
+
+        Scroll() {
+          Row() {
+            Button() {
+              LikeButtonContent()
+            }.backgroundColor('#212121')
+
+            Button() {
+              CommentButtonContent()
+            }.backgroundColor('#212121')
+            .margin({ left: 10 })
+
+            Button() {
+              SaveButtonContent()
+            }.backgroundColor('#212121')
+            .margin({ left: 10 })
+
+            Button() {
+              ShareButtonContent()
+            }.backgroundColor('#212121')
+            .margin({ left: 10 })
+          }
+        }
+        .margin({ left: 30, right: 30, top: 20 })
+        .scrollable(ScrollDirection.Horizontal)
+        .scrollBar(BarState.Off)
+
+      }
+    }
+    .backgroundColor('#030303')
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Component
+struct LikeButtonContent {
+  build() {
+    Row() {
+      Image($rawfile('playing/thumb_up.svg'))
+        .height(30)
+        .margin({ right: 7 })
+      Text('23万')
+        .fontColor(Color.White)
+        .fontSize(18)
+        .margin({ right: 7 })
+        .padding({ right: 7 })
+        .borderWidth({ right: 1 })
+        .borderColor('#a9a9a9')
+      Image($rawfile('playing/thumb_down.svg'))
+        .height(30)
+    }
+    .padding({
+      left: 15,
+      right: 15,
+      top: 5,
+      bottom: 5,
+    })
+    .alignItems(VerticalAlign.Center)
+  }
+}
+
+@Component
+struct CommentButtonContent {
+  build() {
+    Row() {
+      Image($rawfile('playing/comment.svg'))
+        .height(30)
+        .margin({ right: 7 })
+      Text('121')
+        .fontColor(Color.White)
+        .fontSize(18)
+    }
+    .padding({
+      left: 15,
+      right: 15,
+      top: 5,
+      bottom: 5,
+    })
+    .alignItems(VerticalAlign.Center)
+  }
+}
+
+@Component
+struct SaveButtonContent {
+  build() {
+    Row() {
+      Image($rawfile('playing/playlist_add.svg'))
+        .height(30)
+        .margin({ right: 7 })
+      Text('保存')
+        .fontColor(Color.White)
+        .fontSize(18)
+    }
+    .padding({
+      left: 15,
+      right: 15,
+      top: 5,
+      bottom: 5,
+    })
+    .alignItems(VerticalAlign.Center)
+  }
+}
+
+@Component
+struct ShareButtonContent {
+  build() {
+    Row() {
+      Image($rawfile('playing/share.svg'))
+        .height(30)
+        .margin({ right: 7 })
+      Text('分享')
+        .fontColor(Color.White)
+        .fontSize(18)
+    }
+    .padding({
+      left: 15,
+      right: 15,
+      top: 5,
+      bottom: 5,
+    })
+    .alignItems(VerticalAlign.Center)
+  }
+}

@@ -5,7 +5,7 @@ import { Song } from '../../component/Song';
 import { curves, router } from '@kit.ArkUI';
 import { Profile } from '../Profile';
 
-interface DataInterface {
+export interface DataInterface {
   image: Resource,
   name: string,
   creator: string,
