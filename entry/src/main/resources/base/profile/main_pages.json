@@ -3,6 +3,7 @@
     "pages/Index",
     "pages/main/Home",
     "pages/SearchPage",
-    "pages/Notification"
+    "pages/Notification",
+    "pages/explore/Category"
   ]
 }
