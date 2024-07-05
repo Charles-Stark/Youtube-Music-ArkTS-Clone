@@ -11,7 +11,7 @@ export struct SearchPage {
         }
         .backgroundColor(Color.Transparent)
         .margin({ right: 5 })
-        .onClick(() => router.back({ url: 'pages/Index' }))
+        .onClick(() => router.back())
 
         TextInput({ placeholder: '搜索歌曲、音乐人、播客' })
           .defaultFocus(true)
