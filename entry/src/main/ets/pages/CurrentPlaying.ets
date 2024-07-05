@@ -40,7 +40,7 @@ struct CurrentPlaying {
             Image($rawfile('header/down_arrow.svg')).height(30)
           }
           .backgroundColor(Color.Transparent)
-          .onClick(() => router.back({ url: 'pages/Index' }))
+          .onClick(() => router.back())
 
           Row().layoutWeight(1)
 
