@@ -5,6 +5,32 @@ import { DataInterface } from './main/Home'
 @Component
 struct CurrentPlaying {
   song: DataInterface = router.getParams() as DataInterface
+  @State isPlaying: boolean = true
+  @State totalTime: number = 284
+  @State timeRemain: number = 284
+  @State intervalId: number = setInterval(() => {
+    this.timeRemain -= 1
+    if (this.timeRemain <= 0) {
+      clearInterval(this.intervalId)
+      this.isPlaying = false
+      this.timeRemain = this.totalTime
+    }
+  }, 1000)
+  onPlayingChange = () => {
+    this.isPlaying = !this.isPlaying
+    if (this.isPlaying) {
+      this.intervalId = setInterval(() => {
+        this.timeRemain -= 1
+        if (this.timeRemain <= 0) {
+          clearInterval(this.intervalId)
+          this.isPlaying = false
+          this.timeRemain = this.totalTime
+        }
+      }, 1000)
+    } else {
+      clearInterval(this.intervalId)
+    }
+  }
 
   build() {
     Column() {
@@ -81,6 +107,50 @@ struct CurrentPlaying {
         .scrollable(ScrollDirection.Horizontal)
         .scrollBar(BarState.Off)
 
+        Slider({ max: this.totalTime, value: this.totalTime - this.timeRemain })
+          .blockColor(Color.White)
+          .trackColor('#212121')
+          .selectedColor(Color.White)
+          .margin({ left: 30, right: 30, top: 15 })
+          .onChange((value) => {
+            this.timeRemain = this.totalTime - value
+          })
+
+        Row() {
+          Image($rawfile('playing/shuffle.svg'))
+            .width(40)
+            .margin({ right: 12 })
+
+          Image($rawfile('playing/skip_prev.svg'))
+            .width(40)
+            .margin({ right: 12 })
+
+          Image(this.isPlaying ? $rawfile('playing/pause.svg') : $rawfile('playing/play.svg'))
+            .width(80)
+            .margin({ right: 12 })
+            .onClick(this.onPlayingChange)
+
+          Image($rawfile('playing/skip_next.svg'))
+            .width(40)
+            .margin({ right: 12 })
+
+          Image($rawfile('playing/repeat.svg'))
+            .width(40)
+        }
+        .margin({ top: 10 })
+
+        Flex({ justifyContent: FlexAlign.SpaceEvenly }) {
+          Text('播放列表')
+            .fontColor('#a9a9a9')
+            .fontSize(18)
+          Text('歌词')
+            .fontColor('#a9a9a9')
+            .fontSize(18)
+          Text('相关内容')
+            .fontColor('#a9a9a9')
+            .fontSize(18)
+        }
+        .margin({ top: 32 })
       }
     }
     .backgroundColor('#030303')
