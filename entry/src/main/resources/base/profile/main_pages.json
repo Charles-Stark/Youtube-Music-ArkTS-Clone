@@ -5,6 +5,8 @@
     "pages/SearchPage",
     "pages/Notification",
     "pages/explore/Category",
-    "pages/CurrentPlaying"
+    "pages/CurrentPlaying",
+    "pages/main/NewDiscovery",
+    "pages/explore/RankList"
   ]
 }
