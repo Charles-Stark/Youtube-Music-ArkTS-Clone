@@ -1,7 +1,7 @@
 @Component
 export struct Card {
   private title: null | string = null
-  @BuilderParam private content: () => void
+  @BuilderParam private content: () => void = EmptyBuilderFunction
 
   build() {
     if (this.title) {
@@ -24,3 +24,5 @@ export struct Card {
     }
   }
 }
+
+@Builder function EmptyBuilderFunction(): void {}
