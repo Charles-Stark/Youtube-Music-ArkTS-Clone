@@ -3,7 +3,7 @@ export struct OtherAlbum {
   private image: null | string = null
   private name: null | string = null
   private creator: null | string = null
-  private sizeof :null|number=null
+  private sizeof: null | number = null
 
   build() {
     if (this.name) {
@@ -29,7 +29,8 @@ export struct OtherAlbum {
           .alignSelf(ItemAlign.Start)
       }
       .width(this.sizeof)
-      .margin({ right: 15 })
+
+      // .margin({ right: 15 })
     }
   }
 }

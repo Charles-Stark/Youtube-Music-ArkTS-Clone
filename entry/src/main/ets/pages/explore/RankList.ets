@@ -106,9 +106,10 @@ export struct RankList {
     Scroll() {
       Column() {
         Row() {
-          Image($rawfile('header/back.svg'))
-            .height(30)
-            .margin({ left: 10 })
+          Image($rawfile('icon/back.png')).height(30)
+            .onClick(()=>{
+              router.back()
+            })
 
           Row() {
           }

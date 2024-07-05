@@ -1,7 +1,8 @@
 import { Card } from '../../component/Card';
-import { OtherAlbum } from '../../component/OtherAlbum';
+// import { OtherAlbum } from '../../component/OtherAlbum';
 import {DataFrame,albumList} from '../../models/albumModel'
 import { router } from '@kit.ArkUI';
+import { Album } from '../../component/Album';
 
 
 @Entry
@@ -12,11 +13,11 @@ struct NewDiscovery {
   AlbumBuilder() {
     Row() {
       ForEach(albumList.slice(0,2), (album: DataFrame) => {
-        OtherAlbum(album)
+        Album({name:album.name, image: album.image, creator:album.creator})
       }, (album: DataFrame) => album.name)
     }
-    .alignItems(VerticalAlign.Top)
-    .justifyContent(FlexAlign.SpaceBetween)
+    // .alignItems(VerticalAlign.Top)
+    // .justifyContent(FlexAlign.SpaceBetween)
     .width('100%')
   }
 
@@ -25,32 +26,39 @@ struct NewDiscovery {
     Grid() {
       ForEach(albumList.slice(2,6), (album: DataFrame) => {
         GridItem(){
-          OtherAlbum(album)
+          Album({name:album.name, image: album.image, creator:album.creator})
         }
       }, (album: DataFrame) => album.name)
     }
-    .columnsTemplate('1fr 1fr')
-    .columnsGap(10)
-    .rowsGap(5)
-    .width('100%')
-    .height('100%')
+    .rowsTemplate('1fr')
+    // .columnsGap(10)
+    // .rowsGap(5)
+    // .width('100%')
+    .height(200).scrollBar(BarState.Off)
   }
 
   build() {
     Scroll(){
       Column(){
-        Row(){
-          Image($rawfile('icon/back.png')).height(30)
-            .onClick(()=>{
-              router.back()
-            })
-          Image($rawfile('icon/search.png')).height(30)
+        Row() {
+          Button() {
+            Image($rawfile('header/back.svg')).height(25)
+          }
+          .backgroundColor(Color.Transparent)
+          .margin({ right: 5 })
+          .onClick(() => router.back())
+
+          Row().layoutWeight(1)
+
+          Button() {
+            Image($rawfile('header/search.svg')).height(30)
+          }
+          .margin({ left: 7 })
+          .backgroundColor(Color.Transparent)
+          .onClick(() => router.pushUrl({ url: 'pages/SearchPage' }))
+
         }
-        .justifyContent(FlexAlign.SpaceBetween)
-        .width('100%')
-        .height('30')
-        .margin({ top: 15})
-        .padding(10)
+        .margin({ top: 30, left: 15, right: 15 })
 
         Card({ title: '新发行', content: this.AlbumBuilder })
           .width('100%')

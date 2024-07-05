@@ -3,6 +3,7 @@ import { Profile } from '../Profile'
 import {OtherAlbum}from '../../component/OtherAlbum'
 import { Card } from '../../component/Card';
 import { albumList, DataFrame } from '../../models/albumModel';
+import { Album } from '../../component/Album';
 
 interface MoodInterface{
   mood:string,
@@ -41,10 +42,9 @@ export struct Explore {
       Grid(){
         ForEach(albumList.slice(6,9), (album: DataFrame) => {
           GridItem(){
-            OtherAlbum(album)
+            Album({name:album.name, image: album.image, creator:album.creator})
           }
         }, (album: DataFrame) => album.name)
-        OtherAlbum().layoutWeight(1)
       }
       .height(200)
       .rowsTemplate('1fr')
