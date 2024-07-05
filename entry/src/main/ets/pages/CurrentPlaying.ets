@@ -72,6 +72,7 @@ struct CurrentPlaying {
         .scrollable(ScrollDirection.Horizontal)
         .scrollBar(BarState.Off)
         .margin({ left: 30, right: 30, top: 20 })
+        .alignSelf(ItemAlign.Start)
 
         Text(this.song.creator)
           .maxLines(1)
