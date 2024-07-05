@@ -32,7 +32,7 @@ export struct hotMusician {
         }
         .layoutWeight(1)
         .padding(15)
-        Image($rawfile('header/recap.svg')).height(30)
+        Image($rawfile('playing/play.svg')).height(30)
       }
     }
 
