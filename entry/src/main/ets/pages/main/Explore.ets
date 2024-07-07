@@ -144,7 +144,7 @@ export struct Explore {
         Grid() {
           GridItem() {
             Column() {
-              Image($rawfile('icon/music-icon.png'))
+              Image($rawfile('explore/music-icon.png'))
                 .width(31)
                 .padding({ left: 9, top: 6 })
               Text('新发行')
@@ -161,7 +161,7 @@ export struct Explore {
 
           GridItem() {
             Column() {
-              Image($rawfile('icon/thecharts.png')).width(25)
+              Image($rawfile('explore/thecharts.png')).width(25)
                 .width(31)
                 .padding({ left: 9, top: 6 })
               Text('排行榜')
@@ -176,7 +176,7 @@ export struct Explore {
 
           GridItem() {
             Column() {
-              Image($rawfile('icon/smile.png')).width(25)
+              Image($rawfile('explore/smile.png')).width(25)
                 .width(31)
                 .padding({ left: 9, top: 6 })
               Text('心情与流派')

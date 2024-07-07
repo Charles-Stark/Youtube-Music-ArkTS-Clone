@@ -5,10 +5,26 @@ export interface AlbumProps {
 }
 
 export const albumDataForHome: AlbumProps[] = [
-  { image: $rawfile('album/AmericanIdiot.jpg'), name: 'American Idiot', creator: 'Green Day' },
-  { image: $rawfile('album/AllHopeIsGone.jpg'), name: 'All Hope Is Gone', creator: 'Slipknot' },
-  { image: $rawfile('album/AllHopeIsGone.jpg'), name: 'Al Hope Is Gone', creator: 'Slipknot' },
-  { image: $rawfile('album/AllHopeIsGone.jpg'), name: 'Allope Is Gone', creator: 'Slipknot' },
+  {
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Video122/v4/d0/4c/53/d04c532e-ca0a-0ace-0847-62003931424b/Job75e8880b-4409-4b22-872b-4a2ab7bd1669-138891124-PreviewImage_preview_image_nonvideo_sdr-Time1668123397619.png/632x632bb.webp',
+    name: 'American Idiot',
+    creator: 'Green Day'
+  },
+  {
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Video115/v4/3f/d8/66/3fd866f3-ca2e-c6f6-bfd5-f71aa1bea214/Job3b01e939-1eb3-496f-ac5b-18a793cbb314-122433625-PreviewImage_preview_image_nonvideo_sdr-Time1630349544215.png/632x632bb.webp',
+    name: 'Nevermind',
+    creator: 'Nirvana'
+  },
+  {
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/11/7a/b8/117ab805-6811-8929-18b9-0fad7baf0c25/17UMGIM98210.rgb.jpg/632x632bb.webp',
+    name: 'Evolve',
+    creator: 'Imagine Dragons'
+  },
+  {
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Video122/v4/ca/de/86/cade86ae-13ab-ffd6-2139-390bccaf9cfd/Jobd1f03fdd-7971-43ea-a520-8d4f8c13475e-133497443-PreviewImage_preview_image_nonvideo_sdr-Time1656540794506.png/632x632bb.webp',
+    name: 'All Hope Is Gone',
+    creator: 'Slipknot'
+  },
 ]
 
 export const albumListForNewDiscovery: AlbumProps[] = [
@@ -60,38 +76,38 @@ export const albumListForNewDiscovery: AlbumProps[] = [
 ]
 
 export interface HotVideoProps extends AlbumProps {
-  image: Resource,
+  image: string | Resource,
   rank: number,
   views: number,
 }
 
 export const hotVideoData: HotVideoProps[] = [
   {
-    image: $rawfile('rankList/QueenBee.jpg'),
-    name: 'Welcome to the Black Parade',
-    creator: 'My Chemical Romance',
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Video221/v4/49/25/b3/4925b3c1-bb5d-8e90-5137-1830484d6001/1968721908920101.jpg/680x382mv.webp',
+    name: 'Rockstar',
+    creator: 'LISA',
     rank: 1,
-    views: 2233,
+    views: 8718,
   },
   {
-    image: $rawfile('rankList/Vaundy.jpg'),
-    name: 'Duality',
-    creator: 'Slipknot',
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Video211/v4/04/41/c6/0441c633-c8ec-00f4-4c2c-1a0acdf71f2d/24UMGIM63464.crop.jpg/680x382mv.webp',
+    name: 'Si Antes Te Hubiera Conocido',
+    creator: 'KAROL G',
     rank: 2,
-    views: 1723,
+    views: 4425,
   },
   {
-    image: $rawfile('rankList/party.jpg'),
-    name: 'Master Of Puppets',
-    creator: 'Metallica',
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Video221/v4/70/4f/a7/704fa7d7-7fc2-c6d5-d4f1-8e989ede1267/198447018556_QZMEV2427326.jpg/1580x888sr.webp',
+    name: 'Gata Only',
+    creator: 'FloyyMenor和Cris Mj',
     rank: 3,
-    views: 1111,
+    views: 2700,
   },
   {
-    image: $rawfile('rankList/barbie.jpg'),
-    name: 'Master Puppets',
-    creator: 'Metallica',
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/a4/f9/58/a4f95869-c2cc-0615-237f-7e2a45ede2c3/1963621990404_cover.jpg/600x600bb.webp',
+    name: 'Si No Quieres No',
+    creator: 'Luis R Conriquez和Neton Vega',
     rank: 4,
-    views: 1101,
+    views: 1400,
   }
 ]

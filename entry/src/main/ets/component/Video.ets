@@ -1,6 +1,6 @@
 @Component
 export struct hotVideo {
-  private image: null | Resource = null
+  private image: null | string | Resource = null
   private name: null | string = null
   private creator: null | string = null
   private rank: null | number = null
