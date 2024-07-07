@@ -1,5 +1,5 @@
 export interface SongProps {
-  image: Resource,
+  image: Resource | string,
   name: string,
   creator: string,
   time: number,

@@ -1,20 +1,18 @@
 import { Card } from '../../component/Card';
 // import { OtherAlbum } from '../../component/OtherAlbum';
-import {DataFrame,albumList} from '../../models/albumModel'
 import { router } from '@kit.ArkUI';
 import { Album } from '../../component/Album';
-
+import { albumListForNewDiscovery, AlbumProps } from '../../models/album';
 
 @Entry
 @Component
 struct NewDiscovery {
-
   @Builder
   AlbumBuilder() {
     Row() {
-      ForEach(albumList.slice(0,2), (album: DataFrame) => {
-        Album({name:album.name, image: album.image, creator:album.creator})
-      }, (album: DataFrame) => album.name)
+      ForEach(albumListForNewDiscovery.slice(0, 2), (album: AlbumProps) => {
+        Album({ name: album.name, image: album.image, creator: album.creator })
+      }, (album: AlbumProps) => album.name)
     }
     // .alignItems(VerticalAlign.Top)
     // .justifyContent(FlexAlign.SpaceBetween)
@@ -24,11 +22,11 @@ struct NewDiscovery {
   @Builder
   MoreBuilder() {
     Grid() {
-      ForEach(albumList, (album: DataFrame) => {
-        GridItem(){
-          Album({name:album.name, image: album.image, creator:album.creator})
+      ForEach(albumListForNewDiscovery, (album: AlbumProps) => {
+        GridItem() {
+          Album({ name: album.name, image: album.image, creator: album.creator })
         }
-      }, (album: DataFrame) => album.name)
+      }, (album: AlbumProps) => album.name)
     }
     .rowsTemplate('1fr 1fr')
     // .columnsGap(10)
@@ -38,8 +36,8 @@ struct NewDiscovery {
   }
 
   build() {
-    Scroll(){
-      Column(){
+    Scroll() {
+      Column() {
         Row() {
           Button() {
             Image($rawfile('header/back.svg')).height(25)
@@ -66,7 +64,7 @@ struct NewDiscovery {
 
         Card({ title: '专辑和单曲', content: this.MoreBuilder })
           .width('100%')
-          .margin({top:10})
+          .margin({ top: 10 })
       }
       .width('100%')
       .height('100%')

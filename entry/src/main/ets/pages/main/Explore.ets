@@ -1,10 +1,9 @@
 import { curves, router } from '@kit.ArkUI'
 import { Profile } from '../Profile'
-import { OtherAlbum } from '../../component/OtherAlbum'
 import { Card } from '../../component/Card';
-import { albumList, DataFrame } from '../../models/albumModel';
 import { Album } from '../../component/Album';
 import { TagButton } from '../../component/TagButton';
+import { albumListForNewDiscovery, AlbumProps } from '../../models/album';
 
 interface MoodInterface {
   mood: string,
@@ -44,9 +43,9 @@ export struct Explore {
   AlbumBuilder() {
     Scroll() {
       Row() {
-        ForEach(albumList.slice(6, 9), (album: DataFrame) => {
+        ForEach(albumListForNewDiscovery.slice(6, 9), (album: AlbumProps) => {
           Album({ name: album.name, image: album.image, creator: album.creator })
-        }, (album: DataFrame) => album.name)
+        }, (album: AlbumProps) => album.name)
         Album().layoutWeight(1)
       }
       .alignItems(VerticalAlign.Top)
