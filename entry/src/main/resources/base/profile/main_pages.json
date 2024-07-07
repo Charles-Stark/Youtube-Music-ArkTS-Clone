@@ -6,7 +6,7 @@
     "pages/Notification",
     "pages/explore/Category",
     "pages/CurrentPlaying",
-    "pages/main/NewDiscovery",
+    "pages/explore/NewDiscovery",
     "pages/explore/RankList"
   ]
 }

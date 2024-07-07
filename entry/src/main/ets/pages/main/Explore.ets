@@ -144,7 +144,7 @@ export struct Explore {
             }
             .onClick(()=>{
               router.pushUrl({
-                url: 'pages/main/NewDiscovery'
+                url: 'pages/explore/NewDiscovery'
               }
               )
             })
