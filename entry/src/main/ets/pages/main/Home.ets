@@ -4,27 +4,8 @@ import { CategoryButton } from '../../component/CategoryButton';
 import { Song } from '../../component/Song';
 import { curves, router } from '@kit.ArkUI';
 import { Profile } from '../Profile';
-
-export interface DataInterface {
-  image: Resource,
-  name: string,
-  creator: string,
-}
-
-const albumData: DataInterface[] = [
-  { image: $rawfile('album/AmericanIdiot.jpg'), name: 'American Idiot', creator: 'Green Day' },
-  { image: $rawfile('album/AllHopeIsGone.jpg'), name: 'All Hope Is Gone', creator: 'Slipknot' },
-]
-
-const songData: DataInterface[] = [
-  {
-    image: $rawfile('song/WelcomeToTheBlackParade.jpg'),
-    name: 'Welcome to the Black Parade',
-    creator: 'My Chemical Romance'
-  },
-  { image: $rawfile('song/Duality.jpg'), name: 'Duality', creator: 'Slipknot' },
-  { image: $rawfile('song/MasterOfPuppets.jpg'), name: 'Master Of Puppets', creator: 'Metallica' },
-]
+import { albumDataForHome, AlbumProps } from '../../models/album';
+import { songDataForHome, SongProps } from '../../models/song';
 
 @Entry
 @Component
@@ -32,9 +13,9 @@ export struct Home {
   @Builder
   AlbumBuilder() {
     Row() {
-      ForEach(albumData, (album: DataInterface) => {
+      ForEach(albumDataForHome, (album: AlbumProps) => {
         Album(album)
-      }, (album: DataInterface) => album.name)
+      }, (album: AlbumProps) => album.name)
       Album().layoutWeight(1)
     }
     .alignItems(VerticalAlign.Top)
@@ -43,10 +24,10 @@ export struct Home {
   @Builder
   SongBuilder() {
     Column() {
-      ForEach(songData, (song: DataInterface) => {
+      ForEach(songDataForHome, (song: SongProps) => {
         Song(song)
           .onClick(() => router.pushUrl({ url: 'pages/CurrentPlaying', params: song }))
-      }, (song: DataInterface) => song.name)
+      }, (song: SongProps) => song.name)
     }
     .alignItems(HorizontalAlign.Start)
   }

@@ -1,13 +1,13 @@
 import { router } from '@kit.ArkUI'
-import { DataInterface } from './main/Home'
+import { SongProps } from '../models/song'
 
 @Entry
 @Component
 struct CurrentPlaying {
-  song: DataInterface = router.getParams() as DataInterface
+  song: SongProps = router.getParams() as SongProps
   @State isPlaying: boolean = true
-  @State totalTime: number = 284
-  @State timeRemain: number = 284
+  @State totalTime: number = this.song.time
+  @State timeRemain: number = this.song.time
   @State intervalId: number = setInterval(() => {
     this.timeRemain -= 1
     if (this.timeRemain <= 0) {
