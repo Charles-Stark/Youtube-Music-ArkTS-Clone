@@ -24,6 +24,12 @@ export const songDataForHome: SongProps[] = [
     creator: 'Metallica',
     time: 516,
   },
+  {
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/2b/f6/b1/2bf6b19e-2995-f2ce-e01a-ed098e6d4719/18UMGIM24877.rgb.jpg/632x632bb.webp',
+    name: 'Sweet Child O\' Mine',
+    creator: 'Guns N\' Roses',
+    time: 357,
+  },
 ]
 
 export interface HotMusicianProps {

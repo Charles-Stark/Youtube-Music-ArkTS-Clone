@@ -12,13 +12,17 @@ import { songDataForHome, SongProps } from '../../models/song';
 export struct Home {
   @Builder
   AlbumBuilder() {
-    Row() {
-      ForEach(albumDataForHome, (album: AlbumProps) => {
-        Album(album)
-      }, (album: AlbumProps) => album.name)
-      Album().layoutWeight(1)
+    Scroll() {
+      Row() {
+        ForEach(albumDataForHome, (album: AlbumProps) => {
+          Album(album)
+        }, (album: AlbumProps) => album.name)
+        Album().layoutWeight(1)
+      }
+      .alignItems(VerticalAlign.Top)
     }
-    .alignItems(VerticalAlign.Top)
+    .scrollable(ScrollDirection.Horizontal)
+    .scrollBar(BarState.Off)
   }
 
   @Builder
@@ -41,55 +45,57 @@ export struct Home {
   }
 
   build() {
-    Column() {
-      Row() {
-        Image($rawfile('header/logo_full.png')).height(30)
+    Scroll() {
+      Column() {
+        Row() {
+          Image($rawfile('header/logo_full.png')).height(30)
+
+          Row() {
+          }
+          .layoutWeight(1)
+
+          Button() {
+            Image($rawfile('header/notification.svg')).height(30)
+          }
+          .backgroundColor(Color.Transparent)
+          .onClick(() => router.pushUrl({ url: 'pages/Notification' }))
+
+          Button() {
+            Image($rawfile('header/search.svg')).height(30)
+          }
+          .margin({ left: 7 })
+          .backgroundColor(Color.Transparent)
+          .onClick(() => router.pushUrl({ url: 'pages/SearchPage' }))
+
+          Button() {
+            Image($rawfile('header/profile.svg')).height(30)
+          }
+          .margin({ left: 7 })
+          .backgroundColor(Color.Transparent)
+          .bindContentCover(this.isProfilePresent, this.ProfileBuilder(), {
+            modalTransition: ModalTransition.DEFAULT,
+          })
+          .onClick(() => this.isProfilePresent = !this.isProfilePresent)
+
+        }
+        .margin({ top: 30, left: 15, right: 15 })
 
         Row() {
+          CategoryButton({ content: '健身' }).margin({ right: 10 })
+          CategoryButton({ content: '专注' }).margin({ right: 10 })
+          CategoryButton({ content: '放松' }).margin({ right: 10 })
+          CategoryButton({ content: '通勤' }).margin({ right: 10 })
+          CategoryButton().layoutWeight(1)
         }
-        .layoutWeight(1)
+        .margin({ top: 35, left: 15, right: 15 })
 
-        Button() {
-          Image($rawfile('header/notification.svg')).height(30)
-        }
-        .backgroundColor(Color.Transparent)
-        .onClick(() => router.pushUrl({ url: 'pages/Notification' }))
+        Card({ title: '为你推荐', content: this.AlbumBuilder })
 
-        Button() {
-          Image($rawfile('header/search.svg')).height(30)
-        }
-        .margin({ left: 7 })
-        .backgroundColor(Color.Transparent)
-        .onClick(() => router.pushUrl({ url: 'pages/SearchPage' }))
-
-        Button() {
-          Image($rawfile('header/profile.svg')).height(30)
-        }
-        .margin({ left: 7 })
-        .backgroundColor(Color.Transparent)
-        .bindContentCover(this.isProfilePresent, this.ProfileBuilder(), {
-          modalTransition: ModalTransition.DEFAULT,
-        })
-        .onClick(() => this.isProfilePresent = !this.isProfilePresent)
-
+        Card({ title: '再听一次', content: this.SongBuilder })
       }
-      .margin({ top: 30, left: 15, right: 15 })
-
-      Row() {
-        CategoryButton({ content: '健身' }).margin({ right: 10 })
-        CategoryButton({ content: '专注' }).margin({ right: 10 })
-        CategoryButton({ content: '放松' }).margin({ right: 10 })
-        CategoryButton({ content: '通勤' }).margin({ right: 10 })
-        CategoryButton().layoutWeight(1)
-      }
-      .margin({ top: 35, left: 15, right: 15 })
-
-      Card({ title: '为你推荐', content: this.AlbumBuilder })
-
-      Card({ title: '再听一次', content: this.SongBuilder })
+      .backgroundColor('#030303')
     }
-    .backgroundColor('#030303')
-    .height('100%')
-    .width('100%')
+    .scrollable(ScrollDirection.Vertical)
+    .scrollBar(BarState.Off)
   }
 }

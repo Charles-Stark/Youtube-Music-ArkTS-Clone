@@ -7,6 +7,8 @@ export interface AlbumProps {
 export const albumDataForHome: AlbumProps[] = [
   { image: $rawfile('album/AmericanIdiot.jpg'), name: 'American Idiot', creator: 'Green Day' },
   { image: $rawfile('album/AllHopeIsGone.jpg'), name: 'All Hope Is Gone', creator: 'Slipknot' },
+  { image: $rawfile('album/AllHopeIsGone.jpg'), name: 'Al Hope Is Gone', creator: 'Slipknot' },
+  { image: $rawfile('album/AllHopeIsGone.jpg'), name: 'Allope Is Gone', creator: 'Slipknot' },
 ]
 
 export const albumListForNewDiscovery: AlbumProps[] = [
