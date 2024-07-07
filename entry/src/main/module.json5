@@ -1,5 +1,10 @@
 {
   "module": {
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.INTERNET"
+      },
+    ],
     "name": "entry",
     "type": "entry",
     "description": "$string:module_desc",
@@ -45,7 +50,7 @@
             "name": "ohos.extension.backup",
             "resource": "$profile:backup_config"
           }
-        ],
+        ]
       }
     ]
   }
