@@ -1,22 +1,23 @@
 import { curves, router } from '@kit.ArkUI'
 import { Profile } from '../Profile'
-import {OtherAlbum}from '../../component/OtherAlbum'
+import { OtherAlbum } from '../../component/OtherAlbum'
 import { Card } from '../../component/Card';
 import { albumList, DataFrame } from '../../models/albumModel';
 import { Album } from '../../component/Album';
 
-interface MoodInterface{
-  mood:string,
-  color:string
+interface MoodInterface {
+  mood: string,
+  color: string
 }
 
-const moodData:MoodInterface[]=[
-  {mood:'锻炼',color:'#23b0c7'},
-  {mood:'轻松',color:'#b0e1a7'},
-  {mood:'摇滚',color:'#fff'},
+const moodData: MoodInterface[] = [
+  { mood: '锻炼', color: '#23b0c7' },
+  { mood: '轻松', color: '#b0e1a7' },
+  { mood: '摇滚', color: '#fff' },
 ]
 
-@Extend(Column) function  myStyle(){
+@Extend(Column)
+function myStyle() {
   .justifyContent(FlexAlign.Center)
   .alignItems(HorizontalAlign.Start)
   .width(100)
@@ -24,55 +25,57 @@ const moodData:MoodInterface[]=[
   .backgroundColor('#292527')
   .borderRadius(8)
 }
-@Extend(Text) function myTextStyle(){
+
+@Extend(Text)
+function myTextStyle() {
   .fontSize(17)
   .fontWeight(500)
   .fontColor('#fff')
-  .padding({left:7,top:9})
+  .padding({ left: 7, top: 9 })
 }
+
 @Entry
 @Component
 export struct Explore {
   @State isProfilePresent: boolean = false
 
-
   @Builder
   AlbumBuilder() {
-    Row() {
-      Grid(){
-        ForEach(albumList.slice(6,9), (album: DataFrame) => {
-          GridItem(){
-            Album({name:album.name, image: album.image, creator:album.creator})
-          }
+    Scroll() {
+      Row() {
+        ForEach(albumList.slice(6, 9), (album: DataFrame) => {
+          Album({ name: album.name, image: album.image, creator: album.creator })
         }, (album: DataFrame) => album.name)
+        Album().layoutWeight(1)
       }
-      .height(200)
-      .rowsTemplate('1fr')
-      .scrollBar(BarState.Off)
+      .alignItems(VerticalAlign.Top)
     }
-    .alignItems(VerticalAlign.Top)
+    .scrollable(ScrollDirection.Horizontal)
+    .scrollBar(BarState.Off)
   }
+
   @Builder
-  MoodBuilder(){
-    Column(){
-      Grid(){
-        ForEach(moodData,(item:MoodInterface)=>{
-          GridItem(){
-            if(item.mood){
-              Row(){
-                Column(){
+  MoodBuilder() {
+    Column() {
+      Grid() {
+        ForEach(moodData, (item: MoodInterface) => {
+          GridItem() {
+            if (item.mood) {
+              Row() {
+                Column() {
                 }
-                .borderRadius({topLeft:8,bottomLeft:8})
+                .borderRadius({ topLeft: 8, bottomLeft: 8 })
                 .height('100%')
                 .width(8)
                 .backgroundColor(`${item.color}`)
-                Column(){
+
+                Column() {
                   Text(`${item.mood}`)
                     .fontSize(20)
                     .fontColor('#fff')
                 }
-            .borderRadius({topRight:8,bottomRight:8})
-            .justifyContent(FlexAlign.Center)
+                .borderRadius({ topRight: 8, bottomRight: 8 })
+                .justifyContent(FlexAlign.Center)
                 .height('100%')
                 .backgroundColor('#292527')
                 .layoutWeight(1)
@@ -82,7 +85,7 @@ export struct Explore {
               .width(155)
             }
           }
-        },(item: MoodInterface) => item.mood)
+        }, (item: MoodInterface) => item.mood)
       }
       .rowsTemplate('1fr')
       .scrollBar(BarState.Off)
@@ -129,20 +132,21 @@ export struct Explore {
 
       }
       .margin({ top: 30, left: 15, right: 15 })
+
       /*
       *第二行的三个方块
        */
-      Column(){
-        Grid(){
+      Column() {
+        Grid() {
           GridItem() {
-            Column(){
+            Column() {
               Image($rawfile('icon/music-icon.png'))
                 .width(31)
-                .padding({left:9,top:6})
+                .padding({ left: 9, top: 6 })
               Text('新发行')
                 .myTextStyle()
             }
-            .onClick(()=>{
+            .onClick(() => {
               router.pushUrl({
                 url: 'pages/explore/NewDiscovery'
               }
@@ -152,32 +156,32 @@ export struct Explore {
           }
 
           GridItem() {
-            Column(){
+            Column() {
               Image($rawfile('icon/thecharts.png')).width(25)
                 .width(31)
-                .padding({left:9,top:6})
+                .padding({ left: 9, top: 6 })
               Text('排行榜')
                 .myTextStyle()
             }
             .myStyle()
           }.onClick(() => {
             router.pushUrl({
-              url:'pages/explore/RankList'
+              url: 'pages/explore/RankList'
             })
           })
 
           GridItem() {
-            Column(){
+            Column() {
               Image($rawfile('icon/smile.png')).width(25)
                 .width(31)
-                .padding({left:9,top:6})
+                .padding({ left: 9, top: 6 })
               Text('心情与流派')
                 .myTextStyle()
             }
             .myStyle()
           }
           .onClick(() => {
-            router.pushUrl({url:'pages/explore/Category'})
+            router.pushUrl({ url: 'pages/explore/Category' })
           })
         }
         .height(100)
@@ -189,6 +193,7 @@ export struct Explore {
       .height(140)
       .width('100%')
       .justifyContent(FlexAlign.Center)
+
       /*
       *新专辑与单曲
        */
@@ -198,8 +203,7 @@ export struct Explore {
       /*
       *心情与流派
        */
-      Card({title:'心情与流派',content:this.MoodBuilder})
-
+      Card({ title: '心情与流派', content: this.MoodBuilder })
 
 
     }
