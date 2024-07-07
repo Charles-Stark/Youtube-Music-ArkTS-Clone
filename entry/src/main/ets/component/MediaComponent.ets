@@ -69,7 +69,7 @@ export struct MediaComponent {
                 .fontColor('#fff')
                 .textOverflow({ overflow: TextOverflow.Ellipsis })
                 .maxLines(1)
-              Text(`${item.text1}・${item.text2}${item.num}`)
+              Text(`${item.type}・${item.note}${item.num}`)
                 .fontSize(14)
                 .fontColor('#cdcdcd')
                 .textOverflow({ overflow: TextOverflow.Ellipsis })
