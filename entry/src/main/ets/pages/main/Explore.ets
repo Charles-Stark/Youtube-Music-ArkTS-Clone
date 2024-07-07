@@ -4,6 +4,7 @@ import { OtherAlbum } from '../../component/OtherAlbum'
 import { Card } from '../../component/Card';
 import { albumList, DataFrame } from '../../models/albumModel';
 import { Album } from '../../component/Album';
+import { TagButton } from '../../component/TagButton';
 
 interface MoodInterface {
   mood: string,
@@ -61,28 +62,32 @@ export struct Explore {
         ForEach(moodData, (item: MoodInterface) => {
           GridItem() {
             if (item.mood) {
-              Row() {
-                Column() {
-                }
-                .borderRadius({ topLeft: 8, bottomLeft: 8 })
-                .height('100%')
-                .width(8)
-                .backgroundColor(`${item.color}`)
-
-                Column() {
-                  Text(`${item.mood}`)
-                    .fontSize(20)
-                    .fontColor('#fff')
-                }
-                .borderRadius({ topRight: 8, bottomRight: 8 })
-                .justifyContent(FlexAlign.Center)
-                .height('100%')
-                .backgroundColor('#292527')
-                .layoutWeight(1)
-              }
-              .padding(8)
-              .height(65)
-              .width(155)
+              TagButton({ tag: item.mood, color: item.color })
+                .height(65)
+                .width(150)
+                .margin({ right: 10 })
+              // Row() {
+              //   Column() {
+              //   }
+              //   .borderRadius({ topLeft: 8, bottomLeft: 8 })
+              //   .height('100%')
+              //   .width(8)
+              //   .backgroundColor(`${item.color}`)
+              //
+              //   Column() {
+              //     Text(`${item.mood}`)
+              //       .fontSize(20)
+              //       .fontColor('#fff')
+              //   }
+              //   .borderRadius({ topRight: 8, bottomRight: 8 })
+              //   .justifyContent(FlexAlign.Center)
+              //   .height('100%')
+              //   .backgroundColor('#292527')
+              //   .layoutWeight(1)
+              // }
+              // .padding(8)
+              // .height(65)
+              // .width(155)
             }
           }
         }, (item: MoodInterface) => item.mood)
@@ -199,7 +204,6 @@ export struct Explore {
        */
 
       Card({ title: '新专辑与单曲', content: this.AlbumBuilder })
-        .height(300)
       /*
       *心情与流派
        */
