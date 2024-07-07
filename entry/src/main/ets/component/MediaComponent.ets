@@ -93,5 +93,6 @@ export struct MediaComponent {
     .height('100%')
     .scrollBar(BarState.Off)
     .edgeEffect(EdgeEffect.None)
+    .margin({ top: 30 })
   }
 }
