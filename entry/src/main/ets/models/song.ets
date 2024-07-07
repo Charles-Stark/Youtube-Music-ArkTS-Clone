@@ -33,7 +33,7 @@ export const songDataForHome: SongProps[] = [
 ]
 
 export interface HotMusicianProps {
-  image: Resource,
+  image: string | Resource,
   name: string
   rank: number,
   views: number,
@@ -41,27 +41,27 @@ export interface HotMusicianProps {
 
 export const hotMusicianData: HotMusicianProps[] = [
   {
-    image: $rawfile('rankList/musician/xien.jpg'),
-    name: 'Parade',
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages112/v4/1d/39/4e/1d394ed5-279c-3186-4b30-e139a3f93adc/8e1d4c20-f1b8-48de-becd-8be82c903060_ami-identity-994af5c375f4c3aa96cd6ced4a700799-2024-03-28T12-56-11.536Z_cropped.png/220x220bb.webp',
+    name: 'Taylor Swift',
     rank: 1,
-    views: 2233
+    views: 5940,
   },
   {
-    image: $rawfile('rankList/musician/taylor.jpg'),
-    name: 'Duality',
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Features115/v4/87/8e/a0/878ea0a1-ed8d-6fd7-3567-76ab8e6529af/mzl.ayuccyos.jpg/220x220bb.webp',
+    name: 'Eminem',
     rank: 2,
-    views: 1723
+    views: 6090
   },
   {
-    image: $rawfile('rankList/musician/biber.jpg'),
-    name: 'Puppets',
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/Features112/v4/ab/50/ef/ab50ef3b-c936-44f0-7b01-bb113a133547/mza_5527770582281912184.png/220x220bb.webp',
+    name: 'Kendrick Lamar',
     rank: 3,
-    views: 1111
+    views: 1530
   },
   {
-    image: $rawfile('rankList/musician/bb.jpg'),
-    name: 'Master',
+    image: 'https://is1-ssl.mzstatic.com/image/thumb/AMCArtistImages112/v4/1b/71/65/1b716513-b0c1-9c6b-45aa-cbb9198248cc/01607cf1-1d52-43d2-84ce-d6fc1f4a3475_ami-identity-7665599cc626d803af7956b3691905e7-2022-11-30T21-07-19.526Z_cropped.png/220x220bb.webp',
+    name: 'Drake',
     rank: 4,
-    views: 1011
+    views: 3000
   }
 ] 
