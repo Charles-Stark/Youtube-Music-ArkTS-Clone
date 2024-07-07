@@ -1,22 +1,22 @@
 import { curves, router } from '@kit.ArkUI'
 import { Profile } from '../Profile'
 import { hotVideo } from '../../component/Video'
-import {hotMusician} from '../../component/Musician'
+import { hotMusician } from '../../component/Musician'
 
 
 interface DataInterfacePlus {
   image: Resource,
   name: string,
   creator: string,
-  rankList:string,
-  watch:string
+  rankList: string,
+  watch: string
 }
 
 interface DataInterfaceMusician {
   image: Resource,
   name: string,
-  rankList:string,
-  watch:string
+  rankList: string,
+  watch: string
 }
 
 const hotVideoData: DataInterfacePlus[] = [
@@ -24,49 +24,55 @@ const hotVideoData: DataInterfacePlus[] = [
     image: $rawfile('rankList/QueenBee.jpg'),
     name: 'Welcome to the Black Parade',
     creator: 'My Chemical Romance',
-    rankList:'1',
-    watch:'2233'
+    rankList: '1',
+    watch: '2233'
   },
-  { image: $rawfile('rankList/Vaundy.jpg'),
+  {
+    image: $rawfile('rankList/Vaundy.jpg'),
     name: 'Duality',
     creator: 'Slipknot',
-    rankList:'2',
-    watch:'1723'
+    rankList: '2',
+    watch: '1723'
   },
-  { image: $rawfile('rankList/party.jpg'),
+  {
+    image: $rawfile('rankList/party.jpg'),
     name: 'Master Of Puppets',
     creator: 'Metallica',
-    rankList:'3',
-    watch:'1111'
+    rankList: '3',
+    watch: '1111'
   },
-  { image: $rawfile('rankList/barbie.jpg'),
+  {
+    image: $rawfile('rankList/barbie.jpg'),
     name: 'Master Puppets',
     creator: 'Metallica',
-    rankList:'4',
-    watch:'111'
+    rankList: '4',
+    watch: '111'
   }
 ]
 const hotMusicianData: DataInterfaceMusician[] = [
   {
     image: $rawfile('rankList/musician/xien.jpg'),
     name: 'Parade',
-    rankList:'1',
-    watch:'2233'
+    rankList: '1',
+    watch: '2233'
   },
-  { image: $rawfile('rankList/musician/taylor.jpg'),
+  {
+    image: $rawfile('rankList/musician/taylor.jpg'),
     name: 'Duality',
-    rankList:'2',
-    watch:'1723'
+    rankList: '2',
+    watch: '1723'
   },
-  { image: $rawfile('rankList/musician/biber.jpg'),
+  {
+    image: $rawfile('rankList/musician/biber.jpg'),
     name: 'Puppets',
-    rankList:'3',
-    watch:'1111'
+    rankList: '3',
+    watch: '1111'
   },
-  { image: $rawfile('rankList/musician/bb.jpg'),
+  {
+    image: $rawfile('rankList/musician/bb.jpg'),
     name: 'Master',
-    rankList:'4',
-    watch:'111'
+    rankList: '4',
+    watch: '111'
   }
 ]
 
@@ -93,7 +99,7 @@ export struct RankList {
   }
 
   @Builder
-  musicianBuilder(){
+  musicianBuilder() {
     Column() {
       ForEach(hotMusicianData, (data: DataInterfaceMusician) => {
         hotMusician(data)
@@ -105,8 +111,8 @@ export struct RankList {
     Scroll() {
       Column() {
         Row() {
-          Image($rawfile('icon/back.png')).height(30)
-            .onClick(()=>{
+          Image($rawfile('header/back.svg')).height(30)
+            .onClick(() => {
               router.back()
             })
 
@@ -192,19 +198,20 @@ export struct RankList {
           }.listDirection(Axis.Horizontal)
         }
         .height(200)
-        Row(){
+
+        Row() {
           Text('最爱的音乐人')
             .fontSize(23)
             .fontWeight(600)
             .fontColor(Color.White)
-            .margin({left:20})
+            .margin({ left: 20 })
         }
-        .margin({top:10})
+        .margin({ top: 10 })
         .width('100%')
 
 
-        List(){
-          ListItem(){
+        List() {
+          ListItem() {
             this.musicianBuilder()
           }
         }

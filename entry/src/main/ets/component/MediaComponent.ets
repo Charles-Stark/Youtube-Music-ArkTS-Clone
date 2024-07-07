@@ -80,7 +80,7 @@ export struct MediaComponent {
             .alignItems(HorizontalAlign.Start)
 
             Row() {
-              Image($rawfile('header/more.png')).width(20)
+              Image($rawfile('more.svg')).width(20)
             }
           }
           .height(70)
