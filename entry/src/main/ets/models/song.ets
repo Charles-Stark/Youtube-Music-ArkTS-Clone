@@ -25,3 +25,37 @@ export const songDataForHome: SongProps[] = [
     time: 516,
   },
 ]
+
+export interface HotMusicianProps {
+  image: Resource,
+  name: string
+  rank: number,
+  views: number,
+}
+
+export const hotMusicianData: HotMusicianProps[] = [
+  {
+    image: $rawfile('rankList/musician/xien.jpg'),
+    name: 'Parade',
+    rank: 1,
+    views: 2233
+  },
+  {
+    image: $rawfile('rankList/musician/taylor.jpg'),
+    name: 'Duality',
+    rank: 2,
+    views: 1723
+  },
+  {
+    image: $rawfile('rankList/musician/biber.jpg'),
+    name: 'Puppets',
+    rank: 3,
+    views: 1111
+  },
+  {
+    image: $rawfile('rankList/musician/bb.jpg'),
+    name: 'Master',
+    rank: 4,
+    views: 1011
+  }
+] 

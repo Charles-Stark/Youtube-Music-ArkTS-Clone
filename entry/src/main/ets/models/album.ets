@@ -56,3 +56,40 @@ export const albumListForNewDiscovery: AlbumProps[] = [
     creator: 'Taylor Swift',
   },
 ]
+
+export interface HotVideoProps extends AlbumProps {
+  image: Resource,
+  rank: number,
+  views: number,
+}
+
+export const hotVideoData: HotVideoProps[] = [
+  {
+    image: $rawfile('rankList/QueenBee.jpg'),
+    name: 'Welcome to the Black Parade',
+    creator: 'My Chemical Romance',
+    rank: 1,
+    views: 2233,
+  },
+  {
+    image: $rawfile('rankList/Vaundy.jpg'),
+    name: 'Duality',
+    creator: 'Slipknot',
+    rank: 2,
+    views: 1723,
+  },
+  {
+    image: $rawfile('rankList/party.jpg'),
+    name: 'Master Of Puppets',
+    creator: 'Metallica',
+    rank: 3,
+    views: 1111,
+  },
+  {
+    image: $rawfile('rankList/barbie.jpg'),
+    name: 'Master Puppets',
+    creator: 'Metallica',
+    rank: 4,
+    views: 1101,
+  }
+]

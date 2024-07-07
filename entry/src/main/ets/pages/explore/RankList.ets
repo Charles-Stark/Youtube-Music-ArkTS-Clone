@@ -2,79 +2,8 @@ import { curves, router } from '@kit.ArkUI'
 import { Profile } from '../Profile'
 import { hotVideo } from '../../component/Video'
 import { hotMusician } from '../../component/Musician'
-
-
-interface DataInterfacePlus {
-  image: Resource,
-  name: string,
-  creator: string,
-  rankList: string,
-  watch: string
-}
-
-interface DataInterfaceMusician {
-  image: Resource,
-  name: string,
-  rankList: string,
-  watch: string
-}
-
-const hotVideoData: DataInterfacePlus[] = [
-  {
-    image: $rawfile('rankList/QueenBee.jpg'),
-    name: 'Welcome to the Black Parade',
-    creator: 'My Chemical Romance',
-    rankList: '1',
-    watch: '2233'
-  },
-  {
-    image: $rawfile('rankList/Vaundy.jpg'),
-    name: 'Duality',
-    creator: 'Slipknot',
-    rankList: '2',
-    watch: '1723'
-  },
-  {
-    image: $rawfile('rankList/party.jpg'),
-    name: 'Master Of Puppets',
-    creator: 'Metallica',
-    rankList: '3',
-    watch: '1111'
-  },
-  {
-    image: $rawfile('rankList/barbie.jpg'),
-    name: 'Master Puppets',
-    creator: 'Metallica',
-    rankList: '4',
-    watch: '111'
-  }
-]
-const hotMusicianData: DataInterfaceMusician[] = [
-  {
-    image: $rawfile('rankList/musician/xien.jpg'),
-    name: 'Parade',
-    rankList: '1',
-    watch: '2233'
-  },
-  {
-    image: $rawfile('rankList/musician/taylor.jpg'),
-    name: 'Duality',
-    rankList: '2',
-    watch: '1723'
-  },
-  {
-    image: $rawfile('rankList/musician/biber.jpg'),
-    name: 'Puppets',
-    rankList: '3',
-    watch: '1111'
-  },
-  {
-    image: $rawfile('rankList/musician/bb.jpg'),
-    name: 'Master',
-    rankList: '4',
-    watch: '111'
-  }
-]
+import { hotVideoData, HotVideoProps } from '../../models/album'
+import { hotMusicianData, HotMusicianProps } from '../../models/song'
 
 @Entry
 @Component
@@ -90,9 +19,9 @@ export struct RankList {
   @Builder
   videoBuilder() {
     Row() {
-      ForEach(hotVideoData, (data: DataInterfacePlus) => {
+      ForEach(hotVideoData, (data: HotVideoProps) => {
         hotVideo(data)
-      }, (data: DataInterfacePlus) => data.name)
+      }, (data: HotVideoProps) => data.name)
       hotVideo().layoutWeight(1)
     }
     .alignItems(VerticalAlign.Top)
@@ -101,9 +30,9 @@ export struct RankList {
   @Builder
   musicianBuilder() {
     Column() {
-      ForEach(hotMusicianData, (data: DataInterfaceMusician) => {
+      ForEach(hotMusicianData, (data: HotMusicianProps) => {
         hotMusician(data)
-      }, (data: DataInterfaceMusician) => data.name)
+      }, (data: HotMusicianProps) => data.name)
     }
   }
 
