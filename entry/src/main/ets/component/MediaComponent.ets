@@ -1,5 +1,6 @@
 import { MediaModel, mediaModel } from '../models/mediaModel'
 import { PullToRefresh, PullToRefreshConfigurator } from '@ohos/pulltorefresh'
+import { Song } from './Song'
 
 @Component
 export struct MediaComponent {
@@ -59,34 +60,32 @@ export struct MediaComponent {
           Row() {
             Image(item.img)
               .width(80)
-              .margin({ left: 10, right: 10 })
+              .borderRadius(3)
+              .margin({ right: 15 })
             Column() {
               Text(item.name)
                 .fontSize(16)
                 .fontWeight(700)
                 .fontColor('#fff')
-                .margin({ left: 10 })
                 .textOverflow({ overflow: TextOverflow.Ellipsis })
                 .maxLines(1)
               Text(`${item.text1}・${item.text2}${item.num}`)
                 .fontSize(14)
                 .fontColor('#cdcdcd')
-                .height(16)
                 .textOverflow({ overflow: TextOverflow.Ellipsis })
                 .maxLines(1)
-                .margin({ left: 10, top: 10 })
+                .margin({ top: 7 })
             }
             .layoutWeight(1)
             .alignItems(HorizontalAlign.Start)
-            .height('100%')
 
             Row() {
               Image($rawfile('header/more.png')).width(20)
             }
           }
-          .height(67)
-          .alignItems(VerticalAlign.Top)
-          .margin({ top: 10 })
+          .height(70)
+          .alignItems(VerticalAlign.Center)
+          .margin({ top: 10, left: 15, right: 15 })
         }
       })
     }
