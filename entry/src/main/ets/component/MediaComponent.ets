@@ -17,6 +17,7 @@ export struct MediaComponent {
       data: $data,
       scroller: this.scroller,
       refreshConfigurator: this.refreshConfigurator,
+      refreshText: '',
 
       customList: () => {
         this.listBuilder()
