@@ -18,7 +18,7 @@ export struct Profile {
 
         Row().layoutWeight(1)
       }
-      .margin({ top: 30, left: 15, right: 15 })
+      .margin({ top: 38, left: 15, right: 15 })
 
       Row() {
         Image($rawfile('header/profile_pic.jpg'))

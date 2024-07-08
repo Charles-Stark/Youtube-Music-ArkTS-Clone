@@ -68,7 +68,7 @@ export struct RankList {
           .onClick(() => this.isProfilePresent = !this.isProfilePresent)
 
         }
-        .margin({ top: 30, left: 15, right: 15 })
+        .margin({ top: 38, left: 15, right: 15 })
 
         Row() {
           Text('排行榜')

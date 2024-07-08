@@ -46,7 +46,7 @@ export struct Media {
         .onClick(() => this.isProfilePresent = !this.isProfilePresent)
 
       }
-      .margin({ top: 30, left: 15, right: 15 })
+      .margin({ top: 38, left: 15, right: 15 })
 
       MediaComponent()
         .margin({ bottom: 60 })

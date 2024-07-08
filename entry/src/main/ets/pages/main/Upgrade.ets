@@ -41,7 +41,7 @@ export struct Upgrade {
 
       }
       .margin({
-        top: 30,
+        top: 38,
         bottom: 20,
         left: 15,
         right: 15

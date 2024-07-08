@@ -55,7 +55,7 @@ struct CurrentPlaying {
           .margin({ left: 7 })
           .backgroundColor(Color.Transparent)
         }
-        .margin({ top: 30, left: 15, right: 15 })
+        .margin({ top: 38, left: 15, right: 15 })
 
         Image(this.song.image)
           .height(300)

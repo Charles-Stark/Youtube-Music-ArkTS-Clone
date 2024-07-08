@@ -56,7 +56,7 @@ struct NewDiscovery {
           .onClick(() => router.pushUrl({ url: 'pages/SearchPage' }))
 
         }
-        .margin({ top: 30, left: 15, right: 15 })
+        .margin({ top: 38, left: 15, right: 15 })
 
         Card({ title: '新发行', content: this.AlbumBuilder })
           .width('100%')
