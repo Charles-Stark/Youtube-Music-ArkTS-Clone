@@ -32,7 +32,6 @@ export struct MediaComponent {
       data: $data,
       scroller: this.scroller,
       refreshConfigurator: this.refreshConfigurator,
-      refreshText: '',
 
       customList: () => {
         this.listBuilder()
@@ -82,11 +81,13 @@ export struct MediaComponent {
               })
           } else {
             this.currentPage--
-            this.refreshConfigurator.setHasLoadMore(false)
+            // this.refreshConfigurator.setHasLoadMore(false)
           }
           resolve('')
         })
-      }
+      },
+      customLoad: null,
+      customRefresh: null,
     })
   }
 
