@@ -26,6 +26,7 @@ export struct Media {
           Image($rawfile('header/history.svg')).height(30)
         }
         .backgroundColor(Color.Transparent)
+        .onClick(() => router.pushUrl({ url: 'pages/History' }))
 
         Button() {
           Image($rawfile('header/search.svg')).height(30)

@@ -99,7 +99,8 @@ export struct MediaComponent {
           Row() {
             Image(item.img)
               .width(80)
-              .borderRadius(3)
+              .height(80)
+              .borderRadius(item.type === '播放列表' ? 3 : 90)
               .margin({ right: 15 })
             Column() {
               Text(item.name)
@@ -122,9 +123,8 @@ export struct MediaComponent {
               Image($rawfile('more.svg')).width(20)
             }
           }
-          .height(70)
           .alignItems(VerticalAlign.Center)
-          .margin({ top: 10, left: 15, right: 15 })
+          .margin({ top: 12, left: 15, right: 15 })
         }
       })
     }
