@@ -41,7 +41,7 @@ export default class EntryAbility extends UIAbility {
           console.error(`Failed to set the status bar to be invisible. Code is ${err.code}, message is ${err.message}`)
         })
 
-      PersistentStorage.persistProp("history", new Set<SongProps>())
+      PersistentStorage.persistProp("history", new Set<string>())
 
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
     });

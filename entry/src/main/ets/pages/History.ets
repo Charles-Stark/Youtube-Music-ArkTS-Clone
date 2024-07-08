@@ -6,7 +6,7 @@ import { Profile } from './Profile'
 @Component
 struct History {
   @State isProfilePresent: boolean = false
-  @StorageLink('history') history: Set<SongProps> = new Set<SongProps>()
+  @StorageLink('history') history: Set<string> = new Set<string>()
 
   @Builder
   ProfileBuilder() {
@@ -53,44 +53,53 @@ struct History {
       }
       .margin({ top: 38, left: 15, right: 15 })
 
-      Scroll() {
-        Column() {
-          ForEach(Array.from(this.history).reverse(), (item: SongProps) => {
-            Row() {
-              Image(item.image)
-                .width(80)
-                .height(80)
-                .borderRadius(3)
-                .margin({ right: 15 })
-              Column() {
-                Text(item.name)
-                  .fontSize(16)
-                  .fontWeight(700)
-                  .fontColor('#fff')
-                  .textOverflow({ overflow: TextOverflow.Ellipsis })
-                  .maxLines(1)
-                Text(item.creator)
-                  .fontSize(14)
-                  .fontColor('#cdcdcd')
-                  .textOverflow({ overflow: TextOverflow.Ellipsis })
-                  .maxLines(1)
-                  .margin({ top: 7 })
-              }
-              .layoutWeight(1)
-              .alignItems(HorizontalAlign.Start)
+      if (this.history.size > 0) {
+        Scroll() {
+          Column() {
+            ForEach(Array.from(this.history).reverse(), (item: string) => {
+              Row() {
+                Image(JSON.parse(item).image)
+                  .width(80)
+                  .height(80)
+                  .borderRadius(3)
+                  .margin({ right: 15 })
+                Column() {
+                  Text(JSON.parse(item).name)
+                    .fontSize(16)
+                    .fontWeight(700)
+                    .fontColor('#fff')
+                    .textOverflow({ overflow: TextOverflow.Ellipsis })
+                    .maxLines(1)
+                  Text(JSON.parse(item).creator)
+                    .fontSize(14)
+                    .fontColor('#cdcdcd')
+                    .textOverflow({ overflow: TextOverflow.Ellipsis })
+                    .maxLines(1)
+                    .margin({ top: 7 })
+                }
+                .layoutWeight(1)
+                .alignItems(HorizontalAlign.Start)
 
-              Image($rawfile('header/close.svg'))
-                .width(20)
-                .onClick(() => {
-                  this.history.delete(item)
-                })
-            }
-            .alignItems(VerticalAlign.Center)
-            .margin({ top: 12, left: 15, right: 15 })
-          })
+                Image($rawfile('header/close.svg'))
+                  .width(20)
+                  .onClick(() => {
+                    this.history.delete(item)
+                  })
+              }
+              .alignItems(VerticalAlign.Center)
+              .margin({ top: 12, left: 15, right: 15 })
+            })
+          }
         }
+        .margin({ top: 15 })
+      } else {
+        Image($rawfile('header/history.svg'))
+          .height(50)
+          .margin({ top: 200, bottom: 20 })
+        Text('暂无历史记录')
+          .fontColor(Color.White)
+          .fontSize(18)
       }
-      .margin({ top: 15 })
     }
     .backgroundColor('#030303')
     .height('100%')

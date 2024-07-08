@@ -5,7 +5,7 @@ import { SongProps } from '../models/song'
 @Component
 struct CurrentPlaying {
   song: SongProps = router.getParams() as SongProps
-  @StorageLink('history') history: Set<SongProps> = new Set<SongProps>()
+  @StorageLink('history') history: Set<string> = new Set<string>()
   @State isPlaying: boolean = true
   @State totalTime: number = this.song.time
   @State timeRemain: number = this.song.time
@@ -34,7 +34,11 @@ struct CurrentPlaying {
   }
 
   onPageShow(): void {
-    this.history.add(this.song)
+    const jsonSong = JSON.stringify(this.song)
+    if (this.history.has(jsonSong)) {
+      this.history.delete(jsonSong)
+    }
+    this.history.add(jsonSong)
   }
 
   build() {
