@@ -28,7 +28,7 @@ export struct SearchPage {
         .backgroundColor(Color.Transparent)
 
       }
-      .margin({ top: 30, left: 15, right: 15 })
+      .margin({ top: 37, left: 15, right: 15 })
     }
     .backgroundColor('#030303')
     .height('100%')
