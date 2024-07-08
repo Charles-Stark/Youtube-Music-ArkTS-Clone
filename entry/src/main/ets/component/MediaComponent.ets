@@ -1,16 +1,32 @@
-import { MediaModel, mediaModel } from '../models/mediaModel'
+import { MediaModel } from '../models/mediaModel'
 import { PullToRefresh, PullToRefreshConfigurator } from '@ohos/pulltorefresh'
-import { Song } from './Song'
+import axios, { AxiosResponse } from '@ohos/axios'
 
 @Component
 export struct MediaComponent {
   @State isProfilePresent: boolean = false
   private itemsPerPage: number = 10
   private currentPage: number = 1
-  @State data: MediaModel[] = mediaModel.slice(0, this.itemsPerPage)
+  @State data: MediaModel[] | null = null
   private scroller: Scroller = new Scroller()
-  private totalPage: number = Math.ceil(mediaModel.length / this.itemsPerPage)
+  private totalPage: number = 0
   private refreshConfigurator: PullToRefreshConfigurator = new PullToRefreshConfigurator()
+
+  aboutToAppear(): void {
+    axios.get('http://localhost:3000/media', {
+      params: {
+        pageSize: this.itemsPerPage,
+        page: this.currentPage,
+      }
+    })
+      .then((res: AxiosResponse) => {
+        if (res.status == 200) {
+          this.data = res.data['mediaList']
+          this.totalPage = res.data['totalPages']
+        }
+      })
+    this.currentPage = 1
+  }
 
   build() {
     PullToRefresh({
@@ -25,29 +41,48 @@ export struct MediaComponent {
 
       onRefresh: () => {
         return new Promise<string>((resolve) => {
-          setTimeout(() => {
-            resolve('刷新成功')
-            this.data = mediaModel.slice(0, this.itemsPerPage)
-            this.currentPage = 1
-          }, 2000)
+          axios.get('http://localhost:3000/media', {
+            params: {
+              pageSize: this.itemsPerPage,
+              page: this.currentPage,
+            }
+          })
+            .then((res: AxiosResponse) => {
+              if (res.status == 200) {
+                this.data = res.data['mediaList']
+                this.totalPage = res.data['totalPages']
+                resolve('刷新成功')
+              }
+            })
+            .catch(() => {
+              resolve('刷新失败')
+            })
+          this.currentPage = 1
         })
       },
 
       onLoadMore: () => {
         return new Promise<string>((resolve) => {
-          setTimeout(() => {
+          if (this.currentPage < this.totalPage) {
+            axios.get('http://localhost:3000/media', {
+              params: {
+                pageSize: this.itemsPerPage,
+                page: this.currentPage,
+              }
+            })
+              .then((res: AxiosResponse) => {
+                if (res.status == 200) {
+                  if (res.data['mediaList']) {
+                    this.data += res.data['mediaList']
+                  }
+                  this.totalPage = res.data['totalPages']
+                  this.currentPage = res.data['currentPage']
+                }
+              })
             resolve('')
-            if (this.currentPage < this.totalPage) {
-              this.data = [
-                ...this.data,
-                ...mediaModel.slice(this.itemsPerPage * this.currentPage,
-                  this.itemsPerPage * this.currentPage + this.itemsPerPage)
-              ]
-              this.currentPage++
-            } else {
-              this.refreshConfigurator.setHasLoadMore(false)
-            }
-          }, 2000)
+          } else {
+            this.refreshConfigurator.setHasLoadMore(false)
+          }
         })
       }
     })
