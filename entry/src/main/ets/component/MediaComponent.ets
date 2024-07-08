@@ -1,4 +1,4 @@
-import { MediaModel } from '../models/mediaModel'
+import { MediaModel } from '../models/media'
 import { PullToRefresh, PullToRefreshConfigurator } from '@ohos/pulltorefresh'
 import axios, { AxiosResponse } from '@ohos/axios'
 
@@ -13,10 +13,10 @@ export struct MediaComponent {
   private refreshConfigurator: PullToRefreshConfigurator = new PullToRefreshConfigurator()
 
   aboutToAppear(): void {
-    axios.get('http://yt.c12k.dev/media', {
+    axios.get('https://yt.c12k.dev/media', {
       params: {
         pageSize: this.itemsPerPage,
-        page: this.currentPage,
+        page: 1,
       }
     })
       .then((res: AxiosResponse) => {
@@ -25,7 +25,6 @@ export struct MediaComponent {
           this.totalPage = res.data['totalPages']
         }
       })
-    this.currentPage = 1
   }
 
   build() {
@@ -41,10 +40,10 @@ export struct MediaComponent {
 
       onRefresh: () => {
         return new Promise<string>((resolve) => {
-          axios.get('http://yt.c12k.dev/media', {
+          axios.get('https://yt.c12k.dev/media', {
             params: {
               pageSize: this.itemsPerPage,
-              page: this.currentPage,
+              page: 1,
             }
           })
             .then((res: AxiosResponse) => {
@@ -57,14 +56,13 @@ export struct MediaComponent {
             .catch(() => {
               resolve('刷新失败')
             })
-          this.currentPage = 1
         })
       },
 
       onLoadMore: () => {
         return new Promise<string>((resolve) => {
           if (this.currentPage < this.totalPage) {
-            axios.get('http://yt.c12k.dev/media', {
+            axios.get('https://yt.c12k.dev/media', {
               params: {
                 pageSize: this.itemsPerPage,
                 page: this.currentPage + 1,
