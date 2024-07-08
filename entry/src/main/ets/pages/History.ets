@@ -6,32 +6,7 @@ import { Profile } from './Profile'
 @Component
 struct History {
   @State isProfilePresent: boolean = false
-  private data: SongProps[] = [
-    {
-      image: 'https://is1-ssl.mzstatic.com/image/thumb/Video115/v4/02/d3/af/02d3afe2-5fae-2e4c-9cd1-974955af5f90/Jobdb669b7a-c67a-4897-8005-d7348ec69d06-125081753-PreviewImage_PreviewImageIntermediate_preview_image_nonvideo_vfcs220814178-Time1634747359209.png/632x632bb.webp',
-      name: 'Welcome to the Black Parade',
-      creator: 'My Chemical Romance',
-      time: 312,
-    },
-    {
-      image: 'https://is1-ssl.mzstatic.com/image/thumb/Video112/v4/c5/dc/ce/c5dccef7-b9e5-e69c-da23-0c2ecca6c99e/Job01c753c1-4ec0-4807-8c4e-2f8a5872f9e2-133531714-PreviewImage_preview_image_nonvideo_sdr-Time1656605968154.png/632x632bb.webp',
-      name: 'Duality',
-      creator: 'Slipknot',
-      time: 253,
-    },
-    {
-      image: 'https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/94/f7/1b/94f71ba1-a4d5-1f97-9438-1694dd2a3490/17UM1IM19945.rgb.jpg/632x632bb.webp',
-      name: 'Master Of Puppets',
-      creator: 'Metallica',
-      time: 516,
-    },
-    {
-      image: 'https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/2b/f6/b1/2bf6b19e-2995-f2ce-e01a-ed098e6d4719/18UMGIM24877.rgb.jpg/632x632bb.webp',
-      name: 'Sweet Child O\' Mine',
-      creator: 'Guns N\' Roses',
-      time: 357,
-    },
-  ]
+  @StorageLink('history') history: Set<SongProps> = new Set<SongProps>()
 
   @Builder
   ProfileBuilder() {
@@ -80,7 +55,7 @@ struct History {
 
       Scroll() {
         Column() {
-          ForEach(this.data, (item: SongProps) => {
+          ForEach(Array.from(this.history).reverse(), (item: SongProps) => {
             Row() {
               Image(item.image)
                 .width(80)
@@ -104,9 +79,11 @@ struct History {
               .layoutWeight(1)
               .alignItems(HorizontalAlign.Start)
 
-              Row() {
-                Image($rawfile('header/close.svg')).width(20)
-              }
+              Image($rawfile('header/close.svg'))
+                .width(20)
+                .onClick(() => {
+                  this.history.delete(item)
+                })
             }
             .alignItems(VerticalAlign.Center)
             .margin({ top: 12, left: 15, right: 15 })

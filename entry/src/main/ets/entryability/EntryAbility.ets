@@ -2,6 +2,7 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { SongProps } from '../models/song';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -39,6 +40,8 @@ export default class EntryAbility extends UIAbility {
         .catch((err: BusinessError) => {
           console.error(`Failed to set the status bar to be invisible. Code is ${err.code}, message is ${err.message}`)
         })
+
+      PersistentStorage.persistProp("history", new Set<SongProps>())
 
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
     });
