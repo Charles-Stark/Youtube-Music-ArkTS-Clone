@@ -13,7 +13,7 @@ export struct MediaComponent {
   private refreshConfigurator: PullToRefreshConfigurator = new PullToRefreshConfigurator()
 
   aboutToAppear(): void {
-    axios.get('http://localhost:3000/media', {
+    axios.get('http://yt.c12k.dev/media', {
       params: {
         pageSize: this.itemsPerPage,
         page: this.currentPage,
@@ -41,7 +41,7 @@ export struct MediaComponent {
 
       onRefresh: () => {
         return new Promise<string>((resolve) => {
-          axios.get('http://localhost:3000/media', {
+          axios.get('http://yt.c12k.dev/media', {
             params: {
               pageSize: this.itemsPerPage,
               page: this.currentPage,
@@ -64,7 +64,7 @@ export struct MediaComponent {
       onLoadMore: () => {
         return new Promise<string>((resolve) => {
           if (this.currentPage < this.totalPage) {
-            axios.get('http://localhost:3000/media', {
+            axios.get('http://yt.c12k.dev/media', {
               params: {
                 pageSize: this.itemsPerPage,
                 page: this.currentPage,
