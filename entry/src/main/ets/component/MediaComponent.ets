@@ -67,7 +67,7 @@ export struct MediaComponent {
             axios.get('http://yt.c12k.dev/media', {
               params: {
                 pageSize: this.itemsPerPage,
-                page: this.currentPage,
+                page: this.currentPage + 1,
               }
             })
               .then((res: AxiosResponse) => {
@@ -79,10 +79,10 @@ export struct MediaComponent {
                   this.currentPage = res.data['currentPage']
                 }
               })
-            resolve('')
           } else {
             this.refreshConfigurator.setHasLoadMore(false)
           }
+          resolve('')
         })
       }
     })
