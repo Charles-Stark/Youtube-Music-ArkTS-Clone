@@ -49,7 +49,7 @@ export struct Media {
       .margin({ top: 38, left: 15, right: 15 })
 
       MediaComponent()
-        .margin({ bottom: 60 })
+        // .margin({ bottom: 60 })
     }
     .backgroundColor('#030303')
     .height('100%')

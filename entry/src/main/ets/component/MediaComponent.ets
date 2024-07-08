@@ -50,6 +50,8 @@ export struct MediaComponent {
               if (res.status == 200) {
                 this.data = res.data['mediaList']
                 this.totalPage = res.data['totalPages']
+                this.currentPage = 1
+                this.refreshConfigurator.setHasLoadMore(true)
                 resolve('刷新成功')
               }
             })
@@ -61,11 +63,12 @@ export struct MediaComponent {
 
       onLoadMore: () => {
         return new Promise<string>((resolve) => {
-          if (this.currentPage < this.totalPage) {
+          this.currentPage++
+          if (this.currentPage <= this.totalPage) {
             axios.get('https://yt.c12k.dev/media', {
               params: {
                 pageSize: this.itemsPerPage,
-                page: this.currentPage + 1,
+                page: this.currentPage,
               }
             })
               .then((res: AxiosResponse) => {
@@ -78,6 +81,7 @@ export struct MediaComponent {
                 }
               })
           } else {
+            this.currentPage--
             this.refreshConfigurator.setHasLoadMore(false)
           }
           resolve('')
@@ -124,9 +128,8 @@ export struct MediaComponent {
       })
     }
     .width('100%')
-    .height('100%')
     .scrollBar(BarState.Off)
     .edgeEffect(EdgeEffect.None)
-    .margin({ top: 30 })
+    .margin({ top: 20, bottom: 80 })
   }
 }
