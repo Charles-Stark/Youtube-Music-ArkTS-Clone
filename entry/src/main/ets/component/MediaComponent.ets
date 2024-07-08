@@ -73,7 +73,7 @@ export struct MediaComponent {
               .then((res: AxiosResponse) => {
                 if (res.status == 200) {
                   if (res.data['mediaList']) {
-                    this.data += res.data['mediaList']
+                    this.data = [...this.data as MediaModel[], ...res.data['mediaList'] as MediaModel[]]
                   }
                   this.totalPage = res.data['totalPages']
                   this.currentPage = res.data['currentPage']
