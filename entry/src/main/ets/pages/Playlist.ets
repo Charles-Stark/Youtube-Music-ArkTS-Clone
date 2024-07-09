@@ -59,7 +59,7 @@ struct Playlist {
             if (this.songs) {
               ForEach(this.songs, (song: SongProps) => {
                 Row() {
-                  Image(song.image)
+                  Image(song.img)
                     .width(80)
                     .height(80)
                     .borderRadius(3)

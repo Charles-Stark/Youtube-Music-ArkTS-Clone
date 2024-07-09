@@ -66,7 +66,7 @@ struct CurrentPlaying {
         }
         .margin({ top: 38, left: 15, right: 15 })
 
-        Image(this.song.image)
+        Image(this.song.img)
           .height(325)
           .width(325)
           .borderRadius(15)
