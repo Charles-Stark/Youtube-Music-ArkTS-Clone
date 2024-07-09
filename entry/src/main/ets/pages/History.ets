@@ -88,6 +88,7 @@ struct History {
               }
               .alignItems(VerticalAlign.Center)
               .margin({ top: 12, left: 15, right: 15 })
+              .onClick(() => router.pushUrl({ url: 'pages/CurrentPlaying', params: JSON.parse(item) }))
             })
           }
         }
