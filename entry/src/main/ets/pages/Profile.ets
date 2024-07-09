@@ -1,3 +1,5 @@
+import { router } from '@kit.ArkUI'
+
 @Component
 export struct Profile {
   @Link isProfilePresent: boolean
@@ -65,6 +67,10 @@ export struct Profile {
         Text('观看记录')
           .fontColor(Color.White)
           .fontSize(20)
+          .onClick(() => {
+            this.isProfilePresent = !this.isProfilePresent
+            router.pushUrl({ url: 'pages/History' })
+          })
         Row().layoutWeight(1)
       }
       .alignItems(VerticalAlign.Center)
