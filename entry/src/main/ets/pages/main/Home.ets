@@ -75,8 +75,7 @@ export struct Home {
           .bindContentCover(this.isProfilePresent, this.ProfileBuilder(), {
             modalTransition: ModalTransition.DEFAULT,
           })
-          .onClick(() => this.isProfilePresent = !this.isProfilePresent)
-
+          .onClick(() => this.isProfilePresent = true)
         }
         .margin({ top: 38, left: 15, right: 15 })
 

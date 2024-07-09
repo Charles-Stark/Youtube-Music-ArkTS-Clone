@@ -1,17 +1,9 @@
-import { curves, router } from '@kit.ArkUI'
-import { Profile } from './Profile'
+import { router } from '@kit.ArkUI'
 
 @Entry
 @Component
 struct History {
-  @State isProfilePresent: boolean = false
   @StorageLink('history') history: Set<string> = new Set<string>()
-
-  @Builder
-  ProfileBuilder() {
-    Profile({ isProfilePresent: this.isProfilePresent })
-      .transition(TransitionEffect.translate({ y: 1000 })).animation({ curve: curves.springMotion(0.6, 0.8) })
-  }
 
   build() {
     Column() {
@@ -38,17 +30,6 @@ struct History {
         .margin({ left: 7 })
         .backgroundColor(Color.Transparent)
         .onClick(() => router.pushUrl({ url: 'pages/SearchPage' }))
-
-        Button() {
-          Image($rawfile('header/profile.svg')).height(30)
-        }
-        .margin({ left: 7 })
-        .backgroundColor(Color.Transparent)
-        .bindContentCover(this.isProfilePresent, this.ProfileBuilder(), {
-          modalTransition: ModalTransition.DEFAULT,
-          onDisappear: () => this.isProfilePresent = !this.isProfilePresent
-        })
-        .onClick(() => this.isProfilePresent = !this.isProfilePresent)
       }
       .margin({ top: 38, left: 15, right: 15 })
 

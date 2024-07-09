@@ -68,7 +68,7 @@ export struct Profile {
           .fontColor(Color.White)
           .fontSize(20)
           .onClick(() => {
-            this.isProfilePresent = !this.isProfilePresent
+            this.isProfilePresent = false
             router.pushUrl({ url: 'pages/History' })
           })
         Row().layoutWeight(1)

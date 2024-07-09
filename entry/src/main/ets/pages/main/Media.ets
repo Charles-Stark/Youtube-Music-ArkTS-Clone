@@ -42,9 +42,9 @@ export struct Media {
         .backgroundColor(Color.Transparent)
         .bindContentCover(this.isProfilePresent, this.ProfileBuilder(), {
           modalTransition: ModalTransition.DEFAULT,
-          onDisappear: () => this.isProfilePresent = !this.isProfilePresent
+          onDisappear: () => this.isProfilePresent = false
         })
-        .onClick(() => this.isProfilePresent = !this.isProfilePresent)
+        .onClick(() => this.isProfilePresent = true)
 
       }
       .margin({ top: 38, left: 15, right: 15 })
