@@ -100,7 +100,7 @@ struct Playlist {
             }
           }
         }
-        .margin({ top: 30 })
+        .margin({ top: 30, bottom: 100 })
       }
     }
     .backgroundColor('#030303')
