@@ -93,15 +93,14 @@ struct Playlist {
                 })
               })
             } else {
-              Text('no songs')
+              Text('播放列表为空')
                 .fontColor(Color.White)
+                .margin({ top: 50 })
+                .fontSize(18)
             }
           }
         }
         .margin({ top: 30 })
-      } else {
-        Text('nothing')
-          .fontColor(Color.White)
       }
     }
     .backgroundColor('#030303')
