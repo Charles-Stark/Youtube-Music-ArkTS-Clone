@@ -93,44 +93,53 @@ export struct MediaComponent {
 
   @Builder
   listBuilder() {
-    List({ scroller: this.scroller }) {
-      ForEach(this.data, (item: MediaModel) => {
-        ListItem() {
-          Row() {
-            Image(item.img)
-              .width(80)
-              .height(80)
-              .borderRadius(item.type === '播放列表' ? 3 : 90)
-              .margin({ right: 15 })
-            Column() {
-              Text(item.name)
-                .fontSize(16)
-                .fontWeight(700)
-                .fontColor('#fff')
-                .textOverflow({ overflow: TextOverflow.Ellipsis })
-                .maxLines(1)
-              Text(`${item.type}・${item.note}${item.num}`)
-                .fontSize(14)
-                .fontColor('#cdcdcd')
-                .textOverflow({ overflow: TextOverflow.Ellipsis })
-                .maxLines(1)
-                .margin({ top: 7 })
-            }
-            .layoutWeight(1)
-            .alignItems(HorizontalAlign.Start)
-
+    if (this.data) {
+      List({ scroller: this.scroller }) {
+        ForEach(this.data, (item: MediaModel) => {
+          ListItem() {
             Row() {
-              Image($rawfile('more.svg')).width(20)
+              Image(item.img)
+                .width(80)
+                .height(80)
+                .borderRadius(item.type === '播放列表' ? 3 : 90)
+                .margin({ right: 15 })
+              Column() {
+                Text(item.name)
+                  .fontSize(16)
+                  .fontWeight(700)
+                  .fontColor('#fff')
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+                  .maxLines(1)
+                Text(`${item.type}・${item.note}${item.num}`)
+                  .fontSize(14)
+                  .fontColor('#cdcdcd')
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+                  .maxLines(1)
+                  .margin({ top: 7 })
+              }
+              .layoutWeight(1)
+              .alignItems(HorizontalAlign.Start)
+
+              Row() {
+                Image($rawfile('more.svg')).width(20)
+              }
             }
+            .alignItems(VerticalAlign.Center)
+            .margin({ top: 12, left: 15, right: 15 })
           }
-          .alignItems(VerticalAlign.Center)
-          .margin({ top: 12, left: 15, right: 15 })
-        }
-      })
+        })
+      }
+      .width('100%')
+      .scrollBar(BarState.Off)
+      .edgeEffect(EdgeEffect.None)
+      .margin({ top: 20, bottom: 80 })
+    } else {
+      Image($rawfile('explore/music-icon.png'))
+        .height(50)
+        .margin({ top: 200, bottom: 20 })
+      Text('暂无内容')
+        .fontColor(Color.White)
+        .fontSize(18)
     }
-    .width('100%')
-    .scrollBar(BarState.Off)
-    .edgeEffect(EdgeEffect.None)
-    .margin({ top: 20, bottom: 80 })
   }
 }
