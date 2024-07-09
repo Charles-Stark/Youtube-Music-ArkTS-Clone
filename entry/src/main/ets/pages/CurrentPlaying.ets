@@ -67,8 +67,8 @@ struct CurrentPlaying {
         .margin({ top: 38, left: 15, right: 15 })
 
         Image(this.song.image)
-          .height(300)
-          .width(300)
+          .height(325)
+          .width(325)
           .borderRadius(15)
           .margin({ top: 35 })
 
@@ -80,7 +80,7 @@ struct CurrentPlaying {
         }
         .scrollable(ScrollDirection.Horizontal)
         .scrollBar(BarState.Off)
-        .margin({ left: 30, right: 30, top: 20 })
+        .margin({ left: 32, right: 32, top: 25 })
         .alignSelf(ItemAlign.Start)
 
         Text(this.song.creator)
@@ -88,7 +88,7 @@ struct CurrentPlaying {
           .textOverflow({ overflow: TextOverflow.Ellipsis })
           .fontColor('#a9a9a9')
           .fontSize(20)
-          .margin({ left: 30, right: 30, top: 7 })
+          .margin({ left: 32, right: 32, top: 10 })
           .alignSelf(ItemAlign.Start)
 
         Scroll() {
@@ -113,7 +113,7 @@ struct CurrentPlaying {
             .margin({ left: 10 })
           }
         }
-        .margin({ left: 30, right: 30, top: 20 })
+        .margin({ left: 30, right: 30, top: 22 })
         .scrollable(ScrollDirection.Horizontal)
         .scrollBar(BarState.Off)
 
@@ -121,7 +121,7 @@ struct CurrentPlaying {
           .blockColor(Color.White)
           .trackColor('#212121')
           .selectedColor(Color.White)
-          .margin({ left: 30, right: 30, top: 15 })
+          .margin({ left: 30, right: 30, top: 21 })
           .onChange((value) => {
             this.timeRemain = this.totalTime - value
           })
@@ -160,7 +160,7 @@ struct CurrentPlaying {
             .fontColor('#a9a9a9')
             .fontSize(18)
         }
-        .margin({ top: 32 })
+        .margin({ top: 33 })
       }
     }
     .backgroundColor('#030303')
