@@ -36,6 +36,18 @@ export struct SearchPage {
                 }
               })
           })
+          .onSubmit((_enterKey: EnterKeyType, event: SubmitEvent) => {
+            axios.get('https://yt.c12k.dev/search', {
+              params: {
+                keyword: event.text
+              }
+            })
+              .then((res: AxiosResponse) => {
+                if (res.status == 200) {
+                  this.result = res.data
+                }
+              })
+          })
 
         Button() {
           Image($rawfile('header/mic.svg')).height(30)
