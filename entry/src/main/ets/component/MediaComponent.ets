@@ -1,6 +1,7 @@
 import { MediaModel } from '../models/media'
 import { PullToRefresh, PullToRefreshConfigurator } from '@ohos/pulltorefresh'
 import axios, { AxiosResponse } from '@ohos/axios'
+import { router } from '@kit.ArkUI'
 
 @Component
 export struct MediaComponent {
@@ -127,6 +128,11 @@ export struct MediaComponent {
             .alignItems(VerticalAlign.Center)
             .margin({ top: 12, left: 15, right: 15 })
           }
+          .onClick(() => {
+            if (item.type === '播放列表') {
+              router.pushUrl({ url: 'pages/Playlist', params: item })
+            }
+          })
         })
       }
       .width('100%')

@@ -1,5 +1,4 @@
 import { curves, router } from '@kit.ArkUI'
-import { SongProps } from '../models/song'
 import { Profile } from './Profile'
 
 @Entry
