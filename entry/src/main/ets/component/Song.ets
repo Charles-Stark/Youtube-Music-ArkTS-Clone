@@ -1,13 +1,13 @@
 @Component
 export struct Song {
-  private image: null | string | Resource = null
+  private img: null | string | Resource = null
   private name: null | string = null
   private creator: null | string = null
 
   build() {
     if (this.name) {
       Row() {
-        Image(this.image)
+        Image(this.img)
           .width(70)
           .height(70)
           .borderRadius(7)
