@@ -12,7 +12,7 @@ struct Playlist {
   aboutToAppear(): void {
     axios.get('https://yt.c12k.dev/randomSongs', {
       params: {
-        count: 10
+        count: this.playlist.num.slice(0, this.playlist.num.indexOf('首'))
       }
     })
       .then((res: AxiosResponse) => {
@@ -71,7 +71,8 @@ struct Playlist {
                       .fontColor('#fff')
                       .textOverflow({ overflow: TextOverflow.Ellipsis })
                       .maxLines(1)
-                    Text(`${song.creator}・${song.time}`)
+                    Text(`${song.creator}・${Math.floor(song.time / 60).toString().padStart(2, '0')}:${(song.time %
+                      60).toString().padStart(2, '0')}`)
                       .fontSize(14)
                       .fontColor('#cdcdcd')
                       .textOverflow({ overflow: TextOverflow.Ellipsis })

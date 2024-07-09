@@ -57,7 +57,7 @@ struct History {
           Column() {
             ForEach(Array.from(this.history).reverse(), (item: string) => {
               Row() {
-                Image(JSON.parse(item).image)
+                Image(JSON.parse(item).img)
                   .width(80)
                   .height(80)
                   .borderRadius(3)
