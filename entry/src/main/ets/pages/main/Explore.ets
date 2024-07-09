@@ -14,6 +14,9 @@ const moodData: MoodInterface[] = [
   { mood: '锻炼', color: '#23b0c7' },
   { mood: '轻松', color: '#b0e1a7' },
   { mood: '摇滚', color: '#fff' },
+  { mood: '悲伤', color: '#ff0d4751' },
+  { mood: '通勤', color: '#ff2fe30e' },
+  { mood: '派对', color: '#fff5a1a1' },
 ]
 
 @Extend(Column)
@@ -56,46 +59,44 @@ export struct Explore {
 
   @Builder
   MoodBuilder() {
-    Column() {
-      Grid() {
-        ForEach(moodData, (item: MoodInterface) => {
-          GridItem() {
-            if (item.mood) {
-              TagButton({ tag: item.mood, color: item.color })
-                .height(65)
-                .width(150)
-                .margin({ right: 10 })
-              // Row() {
-              //   Column() {
-              //   }
-              //   .borderRadius({ topLeft: 8, bottomLeft: 8 })
-              //   .height('100%')
-              //   .width(8)
-              //   .backgroundColor(`${item.color}`)
-              //
-              //   Column() {
-              //     Text(`${item.mood}`)
-              //       .fontSize(20)
-              //       .fontColor('#fff')
-              //   }
-              //   .borderRadius({ topRight: 8, bottomRight: 8 })
-              //   .justifyContent(FlexAlign.Center)
-              //   .height('100%')
-              //   .backgroundColor('#292527')
-              //   .layoutWeight(1)
-              // }
-              // .padding(8)
-              // .height(65)
-              // .width(155)
-            }
+    List() {
+      ForEach(moodData, (item: MoodInterface) => {
+        ListItem() {
+          if (item.mood) {
+            TagButton({ tag: item.mood, color: item.color })
+              .height(65)
+              .width(150)
+              .margin({ right: 10 })
+            // Row() {
+            //   Column() {
+            //   }
+            //   .borderRadius({ topLeft: 8, bottomLeft: 8 })
+            //   .height('100%')
+            //   .width(8)
+            //   .backgroundColor(`${item.color}`)
+            //
+            //   Column() {
+            //     Text(`${item.mood}`)
+            //       .fontSize(20)
+            //       .fontColor('#fff')
+            //   }
+            //   .borderRadius({ topRight: 8, bottomRight: 8 })
+            //   .justifyContent(FlexAlign.Center)
+            //   .height('100%')
+            //   .backgroundColor('#292527')
+            //   .layoutWeight(1)
+            // }
+            // .padding(8)
+            // .height(65)
+            // .width(155)
           }
-        }, (item: MoodInterface) => item.mood)
-      }
-      .rowsTemplate('1fr')
-      .scrollBar(BarState.Off)
+        }
+      }, (item: MoodInterface) => item.mood)
     }
-    .height(100)
-    .justifyContent(FlexAlign.Center)
+    .listDirection(Axis.Horizontal)
+    .lanes(2)
+    .height(125)
+    .scrollBar(BarState.Off)
   }
 
   @Builder
