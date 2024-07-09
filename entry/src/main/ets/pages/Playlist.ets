@@ -50,11 +50,22 @@ struct Playlist {
               .height(270)
               .width(270)
               .borderRadius(15)
-            Text(this.playlist.name)
-              .fontColor(Color.White)
-              .fontSize(25)
-              .fontWeight(FontWeight.Bold)
-              .margin({ top: 25, bottom: 15 })
+
+            Scroll() {
+              Text(this.playlist.name)
+                .fontColor(Color.White)
+                .fontSize(25)
+                .fontWeight(FontWeight.Bold)
+            }
+            .scrollable(ScrollDirection.Horizontal)
+            .scrollBar(BarState.Off)
+            .margin({
+              left: 20,
+              right: 20,
+              top: 25,
+              bottom: 15
+            })
+            .alignSelf(ItemAlign.Center)
 
             if (this.songs) {
               ForEach(this.songs, (song: SongProps) => {
