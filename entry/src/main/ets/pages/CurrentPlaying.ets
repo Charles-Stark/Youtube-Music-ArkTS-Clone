@@ -77,7 +77,7 @@ struct CurrentPlaying {
 
   song: SongProps = router.getParams() as SongProps
   @StorageLink('history') history: Set<string> = new Set<string>()
-  @State isPlaying: boolean = true
+  @State isPlaying: boolean = false
   @State totalTime: number = this.song.time
   @State timeRemain: number = this.song.time
   @State intervalId: number = setInterval(() => {
@@ -89,6 +89,7 @@ struct CurrentPlaying {
     }
   }, 1000)
   onPlayingChange = () => {
+    this.avplayer!.play()
     this.isPlaying = !this.isPlaying
     if (this.isPlaying) {
       this.intervalId = setInterval(() => {
@@ -125,7 +126,8 @@ struct CurrentPlaying {
     this.avplayer.fdSrc = avFileDescriptor
 
     this.avplayer.prepare()
-    this.avplayer.play()
+    // this.avplayer.play()
+    console.log('123')
   }
 
   build() {
