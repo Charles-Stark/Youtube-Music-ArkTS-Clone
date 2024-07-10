@@ -67,7 +67,7 @@ struct Index {
       Text(title)
         .margin(3)
         .fontSize(11)
-        .fontColor('#ffffff')
+        .fontColor($r('sys.color.white'))
         .fontWeight(this.currentIndex === targetIndex ? FontWeight.Bold : FontWeight.Normal)
     }
     .backgroundColor('#212121')

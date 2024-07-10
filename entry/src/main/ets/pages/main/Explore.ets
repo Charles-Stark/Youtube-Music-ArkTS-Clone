@@ -209,6 +209,8 @@ export struct Explore {
       Card({ title: '心情与流派', content: this.MoodBuilder })
 
 
+
+
     }
     .backgroundColor('#030303')
     .height('100%')
