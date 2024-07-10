@@ -8,6 +8,7 @@ export class AVPlayerDemo {
   private isSeek: boolean = true; // 用于区分模式是否支持seek操作
   private fileSize: number = -1;
   private fd: number = 0;
+
   // 注册avplayer回调函数
   setAVPlayerCallback(avPlayer: media.AVPlayer) {
     // seek操作结果回调函数
@@ -130,7 +131,7 @@ export class AVPlayerDemo {
     let context = getContext(this) as common.UIAbilityContext;
     // 通过UIAbilityContext获取沙箱地址filesDir，以Stage模型为例
     let pathDir = context.filesDir;
-    let path = pathDir  + '/01.mp3';
+    let path = pathDir + '/01.mp3';
     await fileIo.open(path).then((file: fileIo.File) => {
       this.fd = file.fd;
     })
@@ -164,7 +165,7 @@ export class AVPlayerDemo {
     }
     // 通过UIAbilityContext获取沙箱地址filesDir，以Stage模型为例
     let pathDir = context.filesDir;
-    let path = pathDir  + '/01.mp3';
+    let path = pathDir + '/01.mp3';
     await fileIo.open(path).then((file: fileIo.File) => {
       this.fd = file.fd;
     })
