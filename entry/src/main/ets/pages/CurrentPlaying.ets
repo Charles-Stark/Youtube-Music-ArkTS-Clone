@@ -44,8 +44,9 @@ struct CurrentPlaying {
           console.info('AVPlayer state paused called.');
           break;
         case 'completed': // 播放结束后触发该状态机上报
+          this.isPlaying = false
+          this.currentValue = 0
           console.info('AVPlayer state completed called.');
-          avPlayer.stop(); //调用播放结束接口
           break;
         case 'stopped': // stop接口成功调用后触发该状态机上报
           console.info('AVPlayer state stopped called.');
