@@ -5,13 +5,13 @@
         "name": "default",
         "type": "HarmonyOS",
         "material": {
-          "certpath": "C:\\Users\\WZJ\\.ohos\\config\\default_Youtube-Music-ArkTS-Clone_ffvSOXEbDVFvULxL1C4Z5BoAJEd8xpjC1o0NM62ySgU=.cer",
-          "storePassword": "0000001BF123F1CBB2F6722D4039C269E745EB3D762BEA5DBEF259F66AEE6236117C6B3FFEC27FA82C282D",
+          "certpath": "/Users/charles_stark/.ohos/config/default_MyApplication_O887-5vEKkq8O-9eT-okonbg7LihoNzzelcOF3duhUg=.cer",
+          "storePassword": "0000001B4D3A5E2BFBD4F65113DDA5C8664B9F406ED7537293E6CB494C757B3DF0072A6F00F107D19AE2CC",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001BEB455C16E879F21C82B40300D65062B7CC5BBAA0819442BB5ABBF57B40B01968187CA51C4C15DD",
-          "profile": "C:\\Users\\WZJ\\.ohos\\config\\default_Youtube-Music-ArkTS-Clone_ffvSOXEbDVFvULxL1C4Z5BoAJEd8xpjC1o0NM62ySgU=.p7b",
+          "keyPassword": "0000001BA2DBE2154B38FAFAEAB8F09B96CFC74C072B683A0AC1DDA04C311BCC17282D3F352422177E1E40",
+          "profile": "/Users/charles_stark/.ohos/config/default_MyApplication_O887-5vEKkq8O-9eT-okonbg7LihoNzzelcOF3duhUg=.p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "C:\\Users\\WZJ\\.ohos\\config\\default_Youtube-Music-ArkTS-Clone_ffvSOXEbDVFvULxL1C4Z5BoAJEd8xpjC1o0NM62ySgU=.p12"
+          "storeFile": "/Users/charles_stark/.ohos/config/default_MyApplication_O887-5vEKkq8O-9eT-okonbg7LihoNzzelcOF3duhUg=.p12"
         }
       }
     ],

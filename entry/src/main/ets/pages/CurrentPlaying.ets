@@ -19,6 +19,9 @@ struct CurrentPlaying {
       console.error(`Invoke avPlayer failed, code is ${err.code}, message is ${err.message}`);
       avPlayer.reset(); // 调用reset重置资源，触发idle状态
     })
+    avPlayer.on('timeUpdate', (time: number) => {
+      this.currentValue = time
+    })
     // 状态机变化回调函数
     avPlayer.on('stateChange', async (state: string, reason: media.StateChangeReason) => {
       switch (state) {
@@ -61,31 +64,13 @@ struct CurrentPlaying {
   song: SongProps = router.getParams() as SongProps
   @StorageLink('history') history: Set<string> = new Set<string>()
   @State isPlaying: boolean = true
-  @State totalTime: number = this.song.time
-  @State timeRemain: number = this.song.time
-  @State intervalId: number = setInterval(() => {
-    this.timeRemain -= 1
-    if (this.timeRemain <= 0) {
-      clearInterval(this.intervalId)
-      this.isPlaying = false
-      this.timeRemain = this.totalTime
-    }
-  }, 1000)
+  @State currentValue: number | undefined = this.avplayer?.currentTime
   onPlayingChange = () => {
     this.isPlaying = !this.isPlaying
     if (this.isPlaying) {
       this.avplayer?.play()
-      this.intervalId = setInterval(() => {
-        this.timeRemain -= 1
-        if (this.timeRemain <= 0) {
-          clearInterval(this.intervalId)
-          this.isPlaying = false
-          this.timeRemain = this.totalTime
-        }
-      }, 1000)
     } else {
       this.avplayer?.pause()
-      clearInterval(this.intervalId)
     }
   }
 
@@ -185,13 +170,13 @@ struct CurrentPlaying {
         .scrollable(ScrollDirection.Horizontal)
         .scrollBar(BarState.Off)
 
-        Slider({ max: this.totalTime, value: this.totalTime - this.timeRemain })
+        Slider({ max: this.avplayer?.duration, value: this.currentValue })
           .blockColor(Color.White)
           .trackColor('#212121')
           .selectedColor(Color.White)
           .margin({ left: 30, right: 30, top: 21 })
           .onChange((value) => {
-            this.timeRemain = this.totalTime - value
+            // this.avplayer?.seek(value)
           })
 
         Row() {
