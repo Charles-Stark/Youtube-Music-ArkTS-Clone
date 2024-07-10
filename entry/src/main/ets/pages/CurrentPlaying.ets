@@ -86,7 +86,7 @@ struct CurrentPlaying {
     this.setAVPlayerCallback(this.avplayer)
 
     let context = getContext(this) as common.UIAbilityContext
-    let fileDescriptor = await context.resourceManager.getRawFd('audio/holiday.mp3')
+    let fileDescriptor = await context.resourceManager.getRawFd(`audio/${this.song.name}.mp3`)
     let avFileDescriptor: media.AVFileDescriptor = {
       fd: fileDescriptor.fd,
       offset: fileDescriptor.offset,
