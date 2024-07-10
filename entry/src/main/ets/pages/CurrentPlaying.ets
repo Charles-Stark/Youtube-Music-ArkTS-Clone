@@ -175,8 +175,10 @@ struct CurrentPlaying {
           .trackColor('#212121')
           .selectedColor(Color.White)
           .margin({ left: 30, right: 30, top: 21 })
-          .onChange((value) => {
-            // this.avplayer?.seek(value)
+          .onChange((value, mode) => {
+            if (mode === SliderChangeMode.Click) {
+              this.avplayer?.seek(value)
+            }
           })
 
         Row() {
