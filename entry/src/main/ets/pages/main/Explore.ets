@@ -49,7 +49,6 @@ export struct Explore {
         ForEach(albumListForNewDiscovery.slice(6, 9), (album: AlbumProps) => {
           Album({ name: album.name, image: album.image, creator: album.creator })
         }, (album: AlbumProps) => album.name)
-        Album().layoutWeight(1)
       }
       .alignItems(VerticalAlign.Top)
     }

@@ -32,7 +32,7 @@ struct Playlist {
         .margin({ right: 5 })
         .onClick(() => router.back())
 
-        Text('播放列表')
+        Text('专辑')
           .fontColor(Color.White)
           .fontSize(22)
           .margin({ left: 5 })
