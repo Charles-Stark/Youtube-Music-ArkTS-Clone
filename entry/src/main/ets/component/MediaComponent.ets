@@ -140,12 +140,16 @@ export struct MediaComponent {
       .edgeEffect(EdgeEffect.None)
       .margin({ top: 20, bottom: 80 })
     } else {
-      Image($rawfile('explore/music-icon.png'))
-        .height(50)
-        .margin({ top: 200, bottom: 20 })
-      Text('暂无内容')
-        .fontColor(Color.White)
-        .fontSize(18)
+      Scroll(this.scroller) {
+        Column() {
+          Image($rawfile('explore/music-icon.png'))
+            .height(50)
+            .margin({ top: 200, bottom: 20 })
+          Text('暂无内容')
+            .fontColor(Color.White)
+            .fontSize(18)
+        }
+      }
     }
   }
 }
