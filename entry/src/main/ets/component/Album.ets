@@ -34,7 +34,6 @@ export struct Album {
       .width(120)
       .margin({ right: 15 })
       .onClick(() => {
-        console.log('1')
         router.pushUrl({ url: 'pages/Playlist', params: { name: this.name, img: this.image, num: '5' } as MediaModel })
       })
     }
