@@ -10,3 +10,5 @@
 /.clang-tidy
 **/.test
 /.appanalyzer
+
+build-profile.json5
