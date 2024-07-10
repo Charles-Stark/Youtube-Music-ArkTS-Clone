@@ -95,6 +95,10 @@ struct CurrentPlaying {
     this.avplayer.fdSrc = avFileDescriptor
   }
 
+  aboutToDisappear(): void {
+    this.avplayer?.release()
+  }
+
   build() {
     Column() {
       if (this.song) {
