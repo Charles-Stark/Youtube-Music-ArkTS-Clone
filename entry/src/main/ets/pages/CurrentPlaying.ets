@@ -8,10 +8,6 @@ import { common } from '@kit.AbilityKit'
 @Component
 struct CurrentPlaying {
   @State avplayer: media.AVPlayer | null = null
-  private count: number = 0;
-  private isSeek: boolean = true; // 用于区分模式是否支持seek操作
-  private fileSize: number = -1;
-  private fd: number = 0;
 
   setAVPlayerCallback(avPlayer: media.AVPlayer) {
     // seek操作结果回调函数
@@ -40,22 +36,9 @@ struct CurrentPlaying {
           break;
         case 'playing': // play成功调用后触发该状态机上报
           console.info('AVPlayer state playing called.');
-          if (this.count !== 0) {
-            if (this.isSeek) {
-              console.info('AVPlayer start to seek.');
-              avPlayer.seek(avPlayer.duration); //seek到音频末尾
-            } else {
-              // 当播放模式不支持seek操作时继续播放到结尾
-              console.info('AVPlayer wait to play end.');
-            }
-          } else {
-            avPlayer.pause(); // 调用暂停接口暂停播放
-          }
-          this.count++;
           break;
         case 'paused': // pause成功调用后触发该状态机上报
           console.info('AVPlayer state paused called.');
-          avPlayer.play(); // 再次播放接口开始播放
           break;
         case 'completed': // 播放结束后触发该状态机上报
           console.info('AVPlayer state completed called.');
@@ -77,7 +60,7 @@ struct CurrentPlaying {
 
   song: SongProps = router.getParams() as SongProps
   @StorageLink('history') history: Set<string> = new Set<string>()
-  @State isPlaying: boolean = false
+  @State isPlaying: boolean = true
   @State totalTime: number = this.song.time
   @State timeRemain: number = this.song.time
   @State intervalId: number = setInterval(() => {
@@ -89,9 +72,9 @@ struct CurrentPlaying {
     }
   }, 1000)
   onPlayingChange = () => {
-    this.avplayer!.play()
     this.isPlaying = !this.isPlaying
     if (this.isPlaying) {
+      this.avplayer?.play()
       this.intervalId = setInterval(() => {
         this.timeRemain -= 1
         if (this.timeRemain <= 0) {
@@ -101,6 +84,7 @@ struct CurrentPlaying {
         }
       }, 1000)
     } else {
+      this.avplayer?.pause()
       clearInterval(this.intervalId)
     }
   }
@@ -116,18 +100,13 @@ struct CurrentPlaying {
     this.setAVPlayerCallback(this.avplayer)
 
     let context = getContext(this) as common.UIAbilityContext
-    let fileDescriptor = await context.resourceManager.getRawFd('audio/sample.mp3')
+    let fileDescriptor = await context.resourceManager.getRawFd('audio/holiday.mp3')
     let avFileDescriptor: media.AVFileDescriptor = {
       fd: fileDescriptor.fd,
       offset: fileDescriptor.offset,
       length: fileDescriptor.length
     }
-    this.isSeek = true
     this.avplayer.fdSrc = avFileDescriptor
-
-    this.avplayer.prepare()
-    // this.avplayer.play()
-    console.log('123')
   }
 
   build() {
