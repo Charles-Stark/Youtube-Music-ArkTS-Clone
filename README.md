@@ -10,10 +10,10 @@
 
 ## 部分 App 截图
 
-![首页](https://github.com/Charles-Stark/Youtube-Music-ArkTS-Clone/blob/main/entry/src/main/resources/README_img/Screenshot_2024-07-11T121726.png?raw=true)
-![探索](https://github.com/Charles-Stark/Youtube-Music-ArkTS-Clone/blob/main/entry/src/main/resources/README_img/Screenshot_2024-07-11T121748.png?raw=true)
-![媒体库](https://github.com/Charles-Stark/Youtube-Music-ArkTS-Clone/blob/main/entry/src/main/resources/README_img/Screenshot_2024-07-11T121758.png?raw=true)
-![播放器](https://github.com/Charles-Stark/Youtube-Music-ArkTS-Clone/blob/main/entry/src/main/resources/README_img/Screenshot_2024-07-11T121951.png?raw=true)
-![播放列表](https://github.com/Charles-Stark/Youtube-Music-ArkTS-Clone/blob/main/entry/src/main/resources/README_img/Screenshot_2024-07-11T121941.png?raw=true)
-![历史记录](https://github.com/Charles-Stark/Youtube-Music-ArkTS-Clone/blob/main/entry/src/main/resources/README_img/Screenshot_2024-07-11T121919.png?raw=true)
-![搜索](https://github.com/Charles-Stark/Youtube-Music-ArkTS-Clone/blob/main/entry/src/main/resources/README_img/Screenshot_2024-07-11T121852.png?raw=true)
+<img src="https://github.com/Charles-Stark/Youtube-Music-ArkTS-Clone/blob/main/entry/src/main/resources/README_img/Screenshot_2024-07-11T121726.png?raw=true" height="700" atl="首页" />
+<img src="https://github.com/Charles-Stark/Youtube-Music-ArkTS-Clone/blob/main/entry/src/main/resources/README_img/Screenshot_2024-07-11T121748.png?raw=true" height="700" atl="探索" />
+<img src="https://github.com/Charles-Stark/Youtube-Music-ArkTS-Clone/blob/main/entry/src/main/resources/README_img/Screenshot_2024-07-11T121758.png?raw=true" height="700" atl="媒体库" />
+<img src="https://github.com/Charles-Stark/Youtube-Music-ArkTS-Clone/blob/main/entry/src/main/resources/README_img/Screenshot_2024-07-11T121951.png?raw=true" height="700" atl="播放器" />
+<img src="https://github.com/Charles-Stark/Youtube-Music-ArkTS-Clone/blob/main/entry/src/main/resources/README_img/Screenshot_2024-07-11T121941.png?raw=true" height="700" atl="播放列表" />
+<img src="https://github.com/Charles-Stark/Youtube-Music-ArkTS-Clone/blob/main/entry/src/main/resources/README_img/Screenshot_2024-07-11T121919.png?raw=true" height="700" atl="历史记录" />
+<img src="https://github.com/Charles-Stark/Youtube-Music-ArkTS-Clone/blob/main/entry/src/main/resources/README_img/Screenshot_2024-07-11T121852.png?raw=true" height="700" atl="搜索" />
